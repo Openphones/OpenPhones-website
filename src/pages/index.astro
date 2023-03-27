@@ -1,7 +1,33 @@
 ---
+import Store from "../components/store/Store.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="OpenPhones" description="OpenPhones">
-	<h1>OpenPhones</h1>
+	<main>
+		<div class="header">
+			<h1>Store</h1>
+			<h3>Store description</h3>
+		</div>
+		<Store />
+	</main>
 </BaseLayout>
+
+<style lang="scss">
+	main {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 88vw;
+		margin: auto;
+		padding: 1rem 0;
+
+		.header {
+			text-align: center;
+
+			h1 {
+				font-size: 3rem;
+			}
+		}
+	}
+</style>
