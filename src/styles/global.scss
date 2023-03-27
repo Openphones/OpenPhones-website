@@ -1,0 +1,51 @@
+@use "colors";
+
+// Fonts
+@import url("https://rsms.me/inter/inter.css");
+
+html,
+input {
+    font-family: "Inter", sans-serif;
+
+    @supports (font-variation-settings: normal) {
+        font-family: "Inter var", sans-serif;
+    }
+}
+
+// Root
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+
+    @supports (scroll-behavior: smooth) {
+        scroll-behavior: smooth;
+    }
+}
+
+html {
+    height: -webkit-fill-available;
+}
+
+a:not(.store-item) {
+    color: var(--link);
+    text-decoration: none;
+    background-image: linear-gradient(currentColor,currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+
+    &:hover {
+        background-size: 100% 2px;
+    }
+}

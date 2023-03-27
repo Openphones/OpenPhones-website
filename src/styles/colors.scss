@@ -1,0 +1,27 @@
+@mixin light-theme {
+    --bg: #fff;
+    --text: #111;
+    --link: #111;
+    --variant: #ddd;
+    --gradient: linear-gradient(to bottom right, #f00, #00f);
+    --filter: blur(10px) opacity(75%);
+}
+
+@mixin dark-theme {
+    --bg: #111;
+    --text: #eee;
+    --link: #eee;
+    --variant: #222;
+    --gradient: linear-gradient(to bottom right, #f00, #00f);
+    --filter: blur(10px) opacity(75%);
+}
+
+body {
+    @media (prefers-color-scheme: light) {
+        @include light-theme;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        @include dark-theme;
+    }
+}
