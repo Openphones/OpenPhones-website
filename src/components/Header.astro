@@ -1,0 +1,36 @@
+---
+const { title } = Astro.props;
+---
+
+<header>
+    <a href="/">
+        <h2>OpenPhones</h2>
+    </a>
+
+    <nav>
+        <a href="/about">About</a>
+    </nav>
+</header>
+
+<style lang="scss">
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 1px solid var(--variant);
+
+        h2 {
+            margin: 0;
+        }
+
+        a {
+            color: var(--text);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+    }
+</style>
