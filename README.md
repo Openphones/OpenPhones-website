@@ -19,3 +19,5 @@ This is the source code for the [OpenPhones website](https://Openphones.github.i
 The licenses of all npm dependencies are in their respective folders in `node_modules/` when you install them with `npm install`.
 
 [Astro](https://astro.build/), the static site generator used to generate this website, is licensed under the [MIT license](https://github.com/withastro/astro/blob/main/LICENSE).
+
+All of the remaining content in this repository is licensed under the [BSD Zero Clause license](LICENSE).
