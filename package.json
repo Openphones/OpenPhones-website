@@ -1,0 +1,18 @@
+{
+  "name": "openphones",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro check --watch & astro dev --host",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^1.2.1",
+    "astro": "^2.1.7",
+    "astro-compress": "^1.1.35",
+    "sass": "^1.60.0"
+  }
+}
