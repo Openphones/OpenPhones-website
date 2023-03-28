@@ -20,4 +20,6 @@ The licenses of all npm dependencies are in their respective folders in `node_mo
 
 [Astro](https://astro.build/), the static site generator used to generate this website, is licensed under the [MIT license](https://github.com/withastro/astro/blob/main/LICENSE).
 
+The icons come from [Material Symbols](https://fonts.google.com/icons) and are licensed under the [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0.html). The [Matrix](https://matrix.org) logo comes from [Simple Icons](https://simpleicons.org). The [Session](https://getsession.org) logo comes from their Media Kit.
+
 All of the remaining content in this repository is licensed under the [BSD Zero Clause license](LICENSE).

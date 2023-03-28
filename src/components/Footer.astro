@@ -1,38 +1,104 @@
 <footer>
-    <p>Released under the 0BSD License</p>
-    <p>Copyright © 2023 noClaps</p>
-    <p>
-        <a href="mailto:openphones+contact@proton.me">Contact</a>
-        |
-        <a href="/about">About</a>
-    </p>
+    <div class="about">
+        <p>
+            <a href="/OpenPhones-website/about">About Us</a>
+        </p>
+        <p>Copyright © 2023 <a href="https://github.com/noClaps">noClaps</a></p>
+        <p>
+            Released under the <a
+                href="https://github.com/Openphones/OpenPhones-website/blob/main/LICENSE"
+                >0BSD License</a
+            >
+        </p>
+    </div>
+    <div class="contact">
+        <b>Contact Us</b>
+        <p>
+            <a href="mailto:openphones+support@proton.me"
+                ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960"
+                    ><path
+                        d="M140 896q-24 0-42-18t-18-42V316q0-24 18-42t42-18h680q24 0 42 18t18 42v520q0 24-18 42t-42 18H140Zm340-302L140 371v465h680V371L480 594Zm0-60 336-218H145l335 218ZM140 371v-55 520-465Z"
+                    ></path></svg
+                >Email</a
+            >
+        </p>
+        <p>
+            <a href="mailto:openphones+contact@proton.me"
+                ><svg
+                    role="img"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    ><title>Matrix</title><path
+                        d="M.632.55v22.9H2.28V24H0V0h2.28v.55zm7.043 7.26v1.157h.033c.309-.443.683-.784 1.117-1.024.433-.245.936-.365 1.5-.365.54 0 1.033.107 1.481.314.448.208.785.582 1.02 1.108.254-.374.6-.706 1.034-.992.434-.287.95-.43 1.546-.43.453 0 .872.056 1.26.167.388.11.716.286.993.53.276.245.489.559.646.951.152.392.23.863.23 1.417v5.728h-2.349V11.52c0-.286-.01-.559-.032-.812a1.755 1.755 0 0 0-.18-.66 1.106 1.106 0 0 0-.438-.448c-.194-.11-.457-.166-.785-.166-.332 0-.6.064-.803.189a1.38 1.38 0 0 0-.48.499 1.946 1.946 0 0 0-.231.696 5.56 5.56 0 0 0-.06.785v4.768h-2.35v-4.8c0-.254-.004-.503-.018-.752a2.074 2.074 0 0 0-.143-.688 1.052 1.052 0 0 0-.415-.503c-.194-.125-.476-.19-.854-.19-.111 0-.259.024-.439.074-.18.051-.36.143-.53.282-.171.138-.319.337-.439.595-.12.259-.18.6-.18 1.02v4.966H5.46V7.81zm15.693 15.64V.55H21.72V0H24v24h-2.28v-.55z"
+                    ></path></svg
+                >Matrix</a
+            >
+        </p>
+        <p>
+            <a href="mailto:openphones+contact@proton.me">
+                <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 303.06 336.3"
+                    style="enable-background:new 0 0 303.06 336.3;"
+                    xml:space="preserve"
+                >
+                    <path
+                        class="st0"
+                        d="M255.67,170.86l-63.48-35.17h43.03c37.41,0,67.85-30.43,67.85-67.84S272.63,0,235.22,0H85C38.13,0,0,38.13,0,85
+	c0,33.42,18.16,64.25,47.4,80.45l63.48,35.17H67.85C30.44,200.62,0,231.05,0,268.46s30.44,67.85,67.85,67.85h150.22
+	c46.87,0,85-38.13,85-85C303.06,217.88,284.9,187.06,255.67,170.86z M57.58,147.05c-22.06-12.22-35.95-35.25-36.54-60.39
+	C20.19,50.57,50.5,21.02,86.61,21.02h147.25c25.18,0,46.88,19.31,48.12,44.46c1.33,26.88-20.16,49.18-46.76,49.18
+	c0,0-60.99,0.01-84.81,0.01c-5.19,0-9.37,4.21-9.38,9.39l-0.02,69.22L57.58,147.05z M216.46,315.28H69.2
+	c-25.18,0-46.88-19.31-48.12-44.46c-1.33-26.88,20.16-49.18,46.76-49.18h84.81c5.19,0,9.39-4.21,9.39-9.39v-69.23l83.44,46.23
+	c22.06,12.22,35.95,35.25,36.54,60.39C282.87,285.73,252.56,315.28,216.46,315.28z"
+                    ></path>
+                </svg>Session</a
+            >
+        </p>
+    </div>
 </footer>
 
 <style lang="scss">
     footer {
         padding: 0.5rem;
         display: flex;
-        flex-direction: column;
         justify-content: space-evenly;
         align-items: center;
         border-top: 1px solid var(--variant);
         font-size: 0.75rem;
 
-        p,
-        a {
-            margin: 0.25rem;
-        }
+        div {
+            display: flex;
+            flex-direction: column;
 
-        a {
-            text-decoration: none;
-            background-image: linear-gradient(currentColor, currentColor);
-            background-position: 0 100%;
-            background-repeat: no-repeat;
-            background-size: 0% 2px;
-            transition: background-size 0.3s;
+            p,
+            a {
+                margin: 0.25rem 0;
+            }
 
-            &:hover {
-                background-size: 100% 2px;
+            a {
+                display: inline-flex;
+                align-items: center;
+                text-decoration: none;
+                background-image: linear-gradient(currentColor, currentColor);
+                background-position: 0 100%;
+                background-repeat: no-repeat;
+                background-size: 0% 2px;
+                transition: background-size 0.3s;
+
+                &:hover {
+                    background-size: 100% 2px;
+                }
+
+                svg {
+                    height: 0.75rem;
+                    padding-right: 0.25rem;
+                }
             }
         }
     }
