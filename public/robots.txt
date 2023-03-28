@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://Openphones.github.io/OpenPhones-website/sitemap-index.xml
