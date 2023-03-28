@@ -38,4 +38,9 @@ html {
 
 a {
     color: var(--link);
+    text-decoration: none;
+}
+
+svg {
+    fill: var(--text);
 }
