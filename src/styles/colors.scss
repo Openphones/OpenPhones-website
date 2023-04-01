@@ -6,6 +6,7 @@
     --item-bg: #eee;
     --gradient: linear-gradient(to bottom right, #f00, #00f);
     --filter: blur(10px) opacity(75%);
+    --button-text: #eee;
 }
 
 @mixin dark-theme {
@@ -16,6 +17,7 @@
     --item-bg: #222;
     --gradient: linear-gradient(to bottom right, #f00, #00f);
     --filter: blur(10px) opacity(75%);
+    --button-text: #eee;
 }
 
 body {
