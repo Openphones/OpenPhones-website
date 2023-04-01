@@ -1,0 +1,35 @@
+[
+    {
+        "id": "6a",
+        "short_name": "Pixel 6a",
+        "long_name": "Google Pixel 6a with GOS installed",
+        "quality": "refurbished",
+        "price": 349.99,
+        "description": "Lorem ipsum",
+        "images": [
+            "https://picsum.photos/300/400"
+        ]
+    },
+    {
+        "id": "6",
+        "short_name": "Pixel 6",
+        "long_name": "Google Pixel 6 with GOS installed",
+        "quality": "new",
+        "price": 399.99,
+        "description": "Lorem ipsum satirus",
+        "images": [
+            "https://picsum.photos/301/401"
+        ]
+    },
+    {
+        "id": "5a",
+        "short_name": "Pixel 5a",
+        "long_name": "Google Pixel 5a with GOS installed",
+        "quality": "refurbished",
+        "price": 299.99,
+        "description": "Lorem ipsum",
+        "images": [
+            "https://picsum.photos/302/402"
+        ]
+    }
+]

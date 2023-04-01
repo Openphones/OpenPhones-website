@@ -4,7 +4,8 @@
 @import url("https://rsms.me/inter/inter.css");
 
 html,
-input {
+input,
+button {
     font-family: "Inter", sans-serif;
 
     @supports (font-variation-settings: normal) {
