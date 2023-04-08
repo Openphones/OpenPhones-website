@@ -240,16 +240,18 @@
 </script>
 
 <script is:inline>
-    var cartItems = [];
+    var cartItems = {};
     function addToCart(item) {
         var button = document.querySelector(`.add-${item}`);
-        var quantity = button.previousElementSibling.value;
+        var quantity = parseInt(button.previousElementSibling.value);
 
-        for (let i = 0; i < quantity; i++) {
-            cartItems.push(item);
+        if (item in cartItems) {
+            cartItems[item] += quantity;
+        } else {
+            cartItems[item] = quantity;
         }
 
         var cart = JSON.stringify(cartItems);
-        sessionStorage.setItem("cart", cart)
+        sessionStorage.setItem("cart", cart);
     }
 </script>
