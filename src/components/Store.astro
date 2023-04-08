@@ -209,7 +209,9 @@
             <div class="purchase">
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" value="1" min="1"/>
-                <button type="submit">Add to cart</button>
+                <button type="submit" class="add-${
+                    link["id"]
+                }" onclick="addToCart('${link["id"]}')">Add to cart</button>
             </div>
         </div>
         <button type="button" class="close" onclick="document.getElementById('${
@@ -235,4 +237,19 @@
             wrapper.style.display = "block";
         });
     });
+</script>
+
+<script is:inline>
+    var cartItems = [];
+    function addToCart(item) {
+        var button = document.querySelector(`.add-${item}`);
+        var quantity = button.previousElementSibling.value;
+
+        for (let i = 0; i < quantity; i++) {
+            cartItems.push(item);
+        }
+
+        var cart = JSON.stringify(cartItems);
+        sessionStorage.setItem("cart", cart)
+    }
 </script>
