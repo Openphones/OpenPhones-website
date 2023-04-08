@@ -7,7 +7,7 @@
         "price": 349.99,
         "description": "Lorem ipsum",
         "images": [
-            "https://picsum.photos/300/400"
+            "https://picsum.photos/seed/p6a/300/400"
         ]
     },
     {
@@ -18,7 +18,7 @@
         "price": 399.99,
         "description": "Lorem ipsum satirus",
         "images": [
-            "https://picsum.photos/301/401"
+            "https://picsum.photos/seed/p6/300/400"
         ]
     },
     {
@@ -29,7 +29,7 @@
         "price": 299.99,
         "description": "Lorem ipsum",
         "images": [
-            "https://picsum.photos/302/402"
+            "https://picsum.photos/seed/p5a/300/400"
         ]
     }
 ]
