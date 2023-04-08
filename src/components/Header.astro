@@ -43,12 +43,13 @@ import ThemeToggle from "./ThemeToggle.astro";
                 z-index: -1;
                 transition: all 0.25s;
                 background: var(--gradient);
-                inset: 0.5rem;
+                filter: var(--filter);
+                inset: -0.125rem;
+                opacity: 0;
             }
 
             &:hover::before {
-                inset: -0.125rem;
-                filter: var(--filter);
+                opacity: 1;
             }
         }
 
