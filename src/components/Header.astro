@@ -85,6 +85,11 @@ import ThemeToggle from "./ThemeToggle.astro";
     function updateCart() {
         var cart = JSON.parse(localStorage.getItem("cart"));
         var cartBadge = document.getElementById("cart-badge");
-        cartBadge.innerHTML = Object.values(cart).reduce((a, b) => a + b);
+        var cartArray = [];
+
+        for (var key of cart) {
+            cartArray.push(key.quantity);
+        }
+        cartBadge.innerHTML = cartArray.reduce((a, b) => a + b);
     }
 </script>
