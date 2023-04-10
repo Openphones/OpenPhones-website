@@ -165,7 +165,9 @@
 <script src="../scripts/createItems.ts"></script>
 
 <script is:inline>
-    var cartItems = [];
+    var cart = JSON.parse(localStorage.getItem("cart"));
+    var cartItems = cart ? cart : [];
+
     function addToCart(item) {
         var button = document.querySelector(`.add-${item}`);
         var quantity = parseInt(button.previousElementSibling.value);
