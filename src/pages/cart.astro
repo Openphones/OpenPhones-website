@@ -63,12 +63,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         }
 
         img {
-            height: 12rem;
+            max-height: 12rem;
             border-radius: 0.5rem;
-
-            @media (max-width: 768px) {
-                height: auto;
-            }
+            object-fit: cover;
+            align-self: center;
         }
 
         .details {
@@ -87,6 +85,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 @media (max-width: 768px) {
                     position: static;
                     align-self: initial;
+                }
+            }
+
+            p {
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                @media (max-width: 768px) {
+                    white-space: nowrap;
                 }
             }
         }
