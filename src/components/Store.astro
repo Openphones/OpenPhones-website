@@ -245,11 +245,13 @@
         var button = document.querySelector(`.add-${item}`);
         var quantity = parseInt(button.previousElementSibling.value);
 
-        var existingCartItem = cartItems.find(cartItem => cartItem.id === item);
+        var existingCartItem = cartItems.find(
+            (cartItem) => cartItem.id === item
+        );
         if (existingCartItem) {
             existingCartItem.quantity += quantity;
         } else {
-            cartItems.push({id: item, quantity: quantity});
+            cartItems.push({ id: item, quantity: quantity });
         }
 
         var cart = JSON.stringify(cartItems);
