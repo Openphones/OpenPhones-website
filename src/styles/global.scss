@@ -3,19 +3,14 @@
 // Fonts
 @import url("https://rsms.me/inter/inter.css");
 
-html,
-input,
-button {
+// Root
+* {
+    box-sizing: border-box;
     font-family: "Inter", sans-serif;
 
     @supports (font-variation-settings: normal) {
         font-family: "Inter var", sans-serif;
     }
-}
-
-// Root
-* {
-    box-sizing: border-box;
 }
 
 body {

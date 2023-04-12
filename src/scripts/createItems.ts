@@ -1,4 +1,5 @@
 import { jsonLinks } from "./dataIO";
+import { currencyConvert } from "./dataIO";
 
 var store = document.getElementById("store");
 
@@ -17,10 +18,7 @@ function createItems() {
     block.innerHTML = `
         <img src=${link["images"][0]} />
         <h3>${link["short_name"]} (${link["quality"]})</h3>
-        <b>${new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-    }).format(link["price"])}</b>
+        <b>${currencyConvert(link["price"])}</b>
         <p>${link["description"]}</p>
         `;
     return block;
@@ -35,10 +33,7 @@ function createPopups() {
         <img src="${link["images"][0]}" alt="First image" />
         <div class="details">
             <h2>${link["long_name"]}</h2>
-            <b>${new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-    }).format(link["price"])}</b>
+            <b>${currencyConvert(link["price"])}</b>
             <p>${link["description"]}</p>
             <div class="purchase">
                 <label for="quantity">Quantity:</label>
