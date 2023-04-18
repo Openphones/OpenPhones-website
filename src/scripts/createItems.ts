@@ -36,8 +36,8 @@ function createPopups() {
             <b>${currencyConvert(link["price"])}</b>
             <p>${link["description"]}</p>
             <div class="purchase">
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" value="1" min="1"/>
+                <label for="quantity-${link["id"]}">Quantity:</label>
+                <input type="number" id="quantity-${link["id"]}" value="1" min="1"/>
                 <button type="submit" class="add-${link["id"]
         }" onclick="addToCart('${link["id"]}')">Add to cart</button>
             </div>
