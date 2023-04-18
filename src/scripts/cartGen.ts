@@ -31,7 +31,7 @@ function cartGen(item: { id: string; quantity: number; }, link: {
     cartItem.id = item.id;
     cartItem.classList.add("cart-item");
     cartItem.innerHTML = `
-        <img src="${link["images"][0]}" alt="First image" />
+        <img src="${link["images"][0]}" alt="${link["long_name"]}" />
         <div class="details">
             <h2>${link["long_name"]}</h2>
             <p>${link["description"]}</p>

@@ -16,7 +16,7 @@ function createItems() {
 
     block.classList.add("store-item");
     block.innerHTML = `
-        <img src=${link["images"][0]} />
+        <img src="${link["images"][0]}" alt="${link["long_name"]}" />
         <h3>${link["short_name"]} (${link["quality"]})</h3>
         <b>${currencyConvert(link["price"])}</b>
         <p>${link["description"]}</p>
@@ -30,7 +30,7 @@ function createPopups() {
     wrapper.classList.add("wrapper");
     wrapper.innerHTML = `
     <div class="popup">
-        <img src="${link["images"][0]}" alt="First image" />
+        <img src="${link["images"][0]}" alt="${link["long_name"]}" />
         <div class="details">
             <h2>${link["long_name"]}</h2>
             <b>${currencyConvert(link["price"])}</b>
