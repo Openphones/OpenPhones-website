@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+    title="Legal | OpenPhones"
+    description="Privacy Policy and Terms of Service"
+>
+    <main>
+        <h1>Legal</h1>
+        <h2 id="privacy-policy">Privacy Policy</h2>
+
+        <p>
+            We collect the minimum amount of personal information necessary to
+            complete transactions. We do not share your information with third
+            parties except for the purposes of processing payments and
+            completing transactions. Our third-party service providers include
+            OVH for hosting (<a
+                href="https://www.ovh.com/us/support/termsofservice/#personal-data-protection"
+                >https://www.ovh.com/us/support/termsofservice/#personal-data-protection</a
+            >), Cloudflare for CDN and DDoS protection (<a
+                href="https://www.cloudflare.com/privacypolicy/"
+                >https://www.cloudflare.com/privacypolicy/</a
+            >), Stripe for payment processing (<a
+                href="https://stripe.com/privacy">https://stripe.com/privacy</a
+            >), Coinbase for cryptocurrency transactions (<a
+                href="https://www.coinbase.com/legal/privacy"
+                >https://www.coinbase.com/legal/privacy</a
+            >), Pirateship for shipping in the US (<a
+                href="https://www.pirateship.com/privacy"
+                >https://www.pirateship.com/privacy</a
+            >) and Parcelmonkey for international shipping (<a
+                href="https://www.parcelmonkey.com/about/privacy-policy"
+                >https://www.parcelmonkey.com/about/privacy-policy</a
+            >). By using our website, you consent to our privacy policy.
+        </p>
+
+        <h2 id="terms-of-service">Terms of Service</h2>
+        <p>
+            By using our website, you agree to comply with our terms of service.
+            You may not use our website for any illegal or unauthorized
+            purposes. We reserve the right to modify or terminate our website at
+            any time. We are not responsible for any loss or damage resulting
+            from the use of our website. By using our website, you agree to
+            indemnify and hold us harmless from any claims, damages, or expenses
+            arising from your use of our website.
+        </p>
+    </main>
+</BaseLayout>
+
+<style lang="scss">
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 88vw;
+        margin: auto;
+        padding: 1rem 0;
+
+        h1 {
+            text-align: center;
+        }
+
+        a {
+            color: var(--link);
+        }
+    }
+</style>
