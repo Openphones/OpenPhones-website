@@ -1,7 +1,7 @@
 @mixin light-theme {
     --bg: #fff;
     --text: #111;
-    --link: #111;
+    --link: #05b;
     --variant: #ddd;
     --item-bg: #eee;
     --gradient: linear-gradient(to bottom right, #f00, #00f);
@@ -12,7 +12,7 @@
 @mixin dark-theme {
     --bg: #111;
     --text: #eee;
-    --link: #eee;
+    --link: #acf;
     --variant: #222;
     --item-bg: #222;
     --gradient: linear-gradient(to bottom right, #f00, #00f);
