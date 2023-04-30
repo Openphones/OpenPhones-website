@@ -103,7 +103,23 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <script src="../scripts/cartGen.ts"></script>
 
 <script is:inline>
-    function checkout() {
-        localStorage.clear("cart");
+    async function checkout() {
+        cart = JSON.parse(localStorage.getItem("cart"));
+        checkoutPayload = JSON.stringify({
+            items: cart,
+            type: "stripe",
+        });
+        stripeLink = await fetch(
+            "https://api.openphones.global/create-checkout-session",
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                method: "POST",
+                body: checkoutPayload,
+            }
+        );
+        redirect = await stripeLink.json()
+        window.location.href = redirect.url
     }
 </script>
