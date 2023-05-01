@@ -25,5 +25,6 @@ jobs:
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
           protocol: ftps
+          port: 22
           local-dir: dist/
           server-dir: /var/www/html/
