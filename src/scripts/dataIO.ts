@@ -9,4 +9,5 @@ export function currencyConvert(value: number) {
     return new Intl.NumberFormat("en", { style: "currency", currency: currency }).format(value)
 }
 
-export var cart = JSON.parse(localStorage.getItem("cart")!)
+var cartArray = JSON.parse(localStorage.getItem("cart")!)
+export var cart = cartArray ? cartArray : []
