@@ -83,17 +83,4 @@ import ThemeToggle from "./ThemeToggle.astro";
     }
 </style>
 
-<script is:inline>
-    function updateCart() {
-        var cart = JSON.parse(localStorage.getItem("cart"));
-        var cartBadge = document.getElementById("cart-badge");
-        var cartArray = [];
-
-        for (var key of cart) {
-            cartArray.push(key.quantity);
-        }
-        cartBadge.innerHTML = cartArray.reduce((a, b) => a + b);
-    }
-
-    localStorage.getItem("cart") ? updateCart() : "";
-</script>
+<script src="../scripts/updateCart.ts"></script>

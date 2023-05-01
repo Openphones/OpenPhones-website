@@ -1,8 +1,8 @@
 import { jsonLinks } from "./dataIO";
 import { currencyConvert } from "./dataIO";
+import { cart } from "./dataIO";
 
 var cartPage = document.getElementById("cart");
-var cart = JSON.parse(localStorage.getItem("cart")!);
 var subtotal = 0;
 
 if (cart == null) {

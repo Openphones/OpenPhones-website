@@ -1,10 +1,10 @@
 import { url } from "./dataIO"
+import { cart } from "./dataIO";
 
 var checkoutButton = document.getElementById("checkout")
 checkoutButton?.addEventListener("click", checkout)
 
 async function checkout() {
-    var cart = JSON.parse(localStorage.getItem("cart")!);
     var checkoutPayload = JSON.stringify({
         items: cart,
         type: "stripe",
