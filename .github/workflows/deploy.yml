@@ -19,11 +19,12 @@ jobs:
         run: npm run build
 
       - name: Upload to SFTP
-        uses: Dylan700/sftp-upload-action@v1.1.4
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USERNAME }}
+          ssh_private_key: ${{ secrets.SFTP_PRIVKEY }}
           password: ${{ secrets.SFTP_PASSWORD }}
           port: 22
-          uploads: |
-            ./dist/ => ./var/www/html/
+          local_path: ./dist/*
+          remote_path: /var/www/html/
