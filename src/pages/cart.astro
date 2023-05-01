@@ -2,7 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Cart | OpenPhones" description="Get secure GrapheneOS phones without overpaying or sacrificing privacy.">
+<BaseLayout
+    title="Cart | OpenPhones"
+    description="Get secure GrapheneOS phones without overpaying or sacrificing privacy."
+>
     <main>
         <div class="header">
             <h1>Cart</h1>
@@ -103,6 +106,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <script src="../scripts/cartGen.ts"></script>
 
 <script is:inline>
+    var url = location.origin.endsWith(".onion")
+        ? "http://nrnd5rs5aut37ny3vst42sj7a3v7xpw2y42k453gf6ibjlro5yjdpvyd.onion"
+        : "https://api.openphones.global";
+
     async function checkout() {
         cart = JSON.parse(localStorage.getItem("cart"));
         checkoutPayload = JSON.stringify({
@@ -110,7 +117,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             type: "stripe",
         });
         stripeLink = await fetch(
-            "https://api.openphones.global/create-checkout-session",
+            `${url}/create-checkout-session`,
             {
                 headers: {
                     "Content-Type": "application/json",
@@ -119,7 +126,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
                 body: checkoutPayload,
             }
         );
-        redirect = await stripeLink.json()
-        window.location.href = redirect.url
+        redirect = await stripeLink.json();
+        window.location.href = redirect.url;
     }
 </script>
