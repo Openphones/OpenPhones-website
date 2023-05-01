@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+    title="Success! | OpenPhones"
+    description="Get secure GrapheneOS phones without overpaying or sacrificing privacy."
+>
+    <main>
+        <h1>Success</h1>
+        <h2>Your payment went through!</h2>
+    </main>
+</BaseLayout>
+
+<style lang="scss">
+    main {
+        text-align: center;
+    }
+</style>
+
+<script is:inline>
+    localStorage.clear("cart");
+    location.replace("/")
+</script>

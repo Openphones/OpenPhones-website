@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+    title="Failed | OpenPhones"
+    description="Get secure GrapheneOS phones without overpaying or sacrificing privacy."
+>
+    <main>
+        <h1>Transaction failed</h1>
+        <h2>Your cart has not been cleared.</h2>
+    </main>
+</BaseLayout>
+
+<style lang="scss">
+    main {
+        text-align: center;
+    }
+</style>
+
+<script is:inline>
+    location.replace("/")
+</script>
