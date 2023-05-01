@@ -23,7 +23,7 @@ jobs:
         with:
           server: ${{ secrets.SFTP_SERVER }}
           username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
+          ssh_private_key: ${{ secrets.SFTP_PRIVKEY }}
           sftp_only: true
           port: 22
           local_path: dist/*
