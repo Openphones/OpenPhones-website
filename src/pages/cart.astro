@@ -10,9 +10,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <div class="header">
             <h1>Cart</h1>
             <h2 id="subtotal"></h2>
-            <button id="checkout" type="submit" onclick="checkout()"
-                >Checkout</button
-            >
+            <button id="checkout" type="submit">Checkout</button>
         </div>
         <div id="cart"></div>
     </main>
@@ -104,29 +102,4 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </style>
 
 <script src="../scripts/cartGen.ts"></script>
-
-<script is:inline>
-    var url = location.origin.endsWith(".onion")
-        ? "http://nrnd5rs5aut37ny3vst42sj7a3v7xpw2y42k453gf6ibjlro5yjdpvyd.onion"
-        : "https://api.openphones.global";
-
-    async function checkout() {
-        cart = JSON.parse(localStorage.getItem("cart"));
-        checkoutPayload = JSON.stringify({
-            items: cart,
-            type: "stripe",
-        });
-        stripeLink = await fetch(
-            `${url}/create-checkout-session`,
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                method: "POST",
-                body: checkoutPayload,
-            }
-        );
-        redirect = await stripeLink.json();
-        window.location.href = redirect.url;
-    }
-</script>
+<script src="../scripts/checkout.ts"></script>
