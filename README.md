@@ -1,5 +1,5 @@
 # OpenPhones
-This is the source code for the [OpenPhones website](https://Openphones.github.io/OpenPhones-website).
+This is the source code for the [OpenPhones website](https://openphones.global).
 
 ## Build instructions
 1.  ```bash
