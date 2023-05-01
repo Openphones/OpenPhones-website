@@ -27,3 +27,4 @@ jobs:
           port: 22
           uploads: |
             ./dist/ => /var/www/html/
+          dry-run: true
