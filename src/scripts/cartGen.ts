@@ -4,9 +4,11 @@ import { cart } from "./dataIO";
 
 var cartPage = document.getElementById("cart");
 var subtotal = 0;
+var total = document.getElementById("subtotal");
 
-if (cart == null) {
+if (cart.length == 0) {
     document.getElementById("checkout")!.style.display = "none";
+    total!.previousElementSibling!.innerHTML = "Add some items to cart!";
 } else {
     cart.forEach((cartItem: { id: any; quantity: number; }) => {
         for (var link of jsonLinks) {
@@ -16,6 +18,8 @@ if (cart == null) {
             }
         }
     });
+
+    total!.innerHTML = `Subtotal: ${currencyConvert(subtotal)}`;
 }
 
 function cartGen(item: { id: string; quantity: number; }, link: {
@@ -41,11 +45,4 @@ function cartGen(item: { id: string; quantity: number; }, link: {
         </div>`;
 
     return cartItem;
-}
-
-var total = document.getElementById("subtotal");
-if (subtotal == 0) {
-    total!.previousElementSibling!.innerHTML = "Add some items to cart!";
-} else {
-    total!.innerHTML = `Subtotal: ${currencyConvert(subtotal)}`;
 }
