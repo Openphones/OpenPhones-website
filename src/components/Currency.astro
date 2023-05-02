@@ -157,13 +157,4 @@ var currencies = [
     }
 </style>
 
-<script is:inline>
-    var currencySelector = document.getElementById("currency");
-    currencySelector.value = sessionStorage.getItem("currency")
-        ? sessionStorage.getItem("currency")
-        : "USD";
-    currencySelector.addEventListener("change", () => {
-        sessionStorage.setItem("currency", currencySelector.value);
-        location.reload();
-    });
-</script>
+<script src="../scripts/currencySelector.ts"></script>
