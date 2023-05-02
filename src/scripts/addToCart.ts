@@ -1,7 +1,7 @@
 import { updateCart } from "./updateCart";
 import { cart } from "./dataIO";
 
-var cartItems = cart ? cart : [];
+var cartItems = cart || [];
 
 export function addToCart(button: Element, item: any) {
     var quantity = parseInt((button?.previousElementSibling as HTMLInputElement).value);
