@@ -1,1 +1,1 @@
-localStorage.removeItem("cart");
+localStorage.clear();

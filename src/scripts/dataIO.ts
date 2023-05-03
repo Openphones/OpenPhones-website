@@ -1,4 +1,4 @@
-var currency = sessionStorage.getItem("currency") ? sessionStorage.getItem("currency")?.toString() : "USD";
+var currency = localStorage.getItem("currency") || "USD";
 
 export var url = location.origin.endsWith(".onion") ? "http://nrnd5rs5aut37ny3vst42sj7a3v7xpw2y42k453gf6ibjlro5yjdpvyd.onion" : "https://api.openphones.global"
 
