@@ -1,54 +1,43 @@
-import { jsonLinks } from "./dataIO";
-import { currencyConvert } from "./dataIO";
-import { cart } from "./dataIO";
+import { IProduct, cart, currencyConvert, products } from "./dataIO";
 
-var header = document.querySelector(".header") as HTMLElement;
-header.innerHTML = cart.length == 0
+(document.querySelector(".header") as HTMLElement).innerHTML = cart.length == 0
     ? `
 <h1>Add some items to cart!</h1>`
     : `<h1>Cart</h1>
 <h2 id="subtotal"></h2>
 <button id="checkout" type="submit">Checkout</button>
-`
+`;
 
-if (cart.length != 0) {
-    var cartPage = document.getElementById("cart");
-    var subtotal = 0;
-    var total = document.getElementById("subtotal");
+if (cart.length !== 0) {
+    const cartPage = document.getElementById("cart");
+    const totalText = document.getElementById("subtotal");
+    let total = 0;
 
     for (var cartItem of cart) {
-        for (var link of await jsonLinks) {
-            if (link["id"] == cartItem.id) {
-                cartPage!.append(cartGen(cartItem, link));
-                subtotal += link["price"] * cartItem.quantity;
+        for (var link of await products) {
+            if (link.id == cartItem.id) {
+                cartPage.append(cartGen(cartItem.quantity, link));
+                total += link.price * cartItem.quantity;
             }
         }
     }
 
-    total!.innerHTML = `Subtotal: ${currencyConvert(subtotal)}`;
+    totalText.innerHTML = `Subtotal: ${currencyConvert(total)}`;
 }
 
-function cartGen(item: { id: string; quantity: number; }, link: {
-    id: string,
-    short_name: string,
-    long_name: string,
-    quality: string,
-    price: number,
-    description: string,
-    images: Array<string>
-}) {
-    var cartItem = document.createElement("div");
-    cartItem.id = item.id;
-    cartItem.classList.add("cart-item");
-    cartItem.innerHTML = `
-        <img src="${link["images"][0]}" alt="${link["long_name"]}" />
+function cartGen(quantity: number, product: IProduct) {
+    const item = document.createElement("div");
+    item.id = product.id;
+    item.classList.add("cart-item");
+    item.innerHTML = `
+        <img src="${product.images[0]}" alt="${product.long_name}" />
         <div class="details">
-            <h2>${link["long_name"]}</h2>
-            <p>${link["description"]}</p>
+            <h2>${product.long_name}</h2>
+            <p>${product.description}</p>
             <div class="price">
-                <b>${item.quantity} × ${currencyConvert(link["price"])}</b>
+                <b>${quantity} × ${currencyConvert(product.price)}</b>
             </div>
         </div>`;
 
-    return cartItem;
+    return item;
 }

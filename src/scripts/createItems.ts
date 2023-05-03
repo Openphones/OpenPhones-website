@@ -1,60 +1,60 @@
-import { jsonLinks } from "./dataIO";
-import { currencyConvert } from "./dataIO";
 import { addToCart } from "./addToCart";
 import { closePopup } from "./closePopup";
+import { IProduct, currencyConvert, products } from "./dataIO";
 
-var store = document.getElementById("store");
+const store = document.getElementById("store");
 
-for (var link of await jsonLinks) {
-    var item = createItems();
-    var popup = createPopups();
+for (const product of await products) {
+    const item = createItems(product);
+    const popup = createPopups(product);
 
-    store!.append(item);
-    store!.append(popup);
+    store.append(item);
+    store.append(popup);
 
-    const addToCartButtons = store?.querySelectorAll(".add-to-cart")
-    addToCartButtons?.forEach((button) => {
+    const addToCartButtons = store.querySelectorAll(".add-to-cart");
+    addToCartButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            addToCart(button, link["id"]);
-            closePopup(link["id"])
+            addToCart(button, product.id);
+            closePopup(product.id)
         });
     })
 
-    const closeButtons = store?.querySelectorAll(".close")
-    closeButtons?.forEach((button) => {
+    const closeButtons = store.querySelectorAll(".close");
+    closeButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            closePopup(link["id"])
+            closePopup(product.id)
         })
     })
 }
 
-function createItems() {
-    var block = document.createElement("div");
+function createItems(product: IProduct) {
+    const item = document.createElement("div");
 
-    block.classList.add("store-item");
-    block.innerHTML = `
-        <img src="${link["images"][0]}" alt="${link["long_name"]}" />
-        <h3>${link["short_name"]} (${link["quality"]})</h3>
-        <b>${currencyConvert(link["price"])}</b>
-        <p>${link["description"]}</p>
+    item.classList.add("store-item");
+    item.innerHTML = `
+        <img src="${product.images[0]}" alt="${product.long_name}"/>
+        <h3>${product.short_name} (${product.quality})</h3>
+        <b>${currencyConvert(product.price)}</b>
+        <p>${product.description}</p>
         `;
-    return block;
+
+    return item;
 }
 
-function createPopups() {
-    var wrapper = document.createElement("div");
-    wrapper.id = link["id"];
+function createPopups(product: IProduct) {
+    const wrapper = document.createElement("div");
+    wrapper.id = product.id;
     wrapper.classList.add("wrapper");
     wrapper.innerHTML = `
     <div class="popup">
-        <img src="${link["images"][0]}" alt="${link["long_name"]}" />
+        <img src="${product.images[0]}" alt="${product.long_name}" />
         <div class="details">
-            <h2>${link["long_name"]}</h2>
-            <b>${currencyConvert(link["price"])}</b>
-            <p>${link["description"]}</p>
+            <h2>${product.long_name}</h2>
+            <b>${currencyConvert(product.price)}</b>
+            <p>${product.description}</p>
             <div class="purchase">
-                <label for="quantity-${link["id"]}">Quantity:</label>
-                <input type="number" id="quantity-${link["id"]}" value="1" min="1"/>
+                <label for="quantity-${product.id}">Quantity:</label>
+                <input type="number" id="quantity-${product.id}" value="1" min="1"/>
                 <button type="submit" class="add-to-cart">Add to cart</button>
             </div>
         </div>
@@ -70,12 +70,12 @@ function createPopups() {
     return wrapper;
 }
 
-const items = store!.querySelectorAll(".store-item");
-const wrappers = store!.querySelectorAll(".wrapper");
+const items = store.querySelectorAll(".store-item");
+const wrappers = store.querySelectorAll(".wrapper");
 
-items.forEach((item, index) => {
-    item.addEventListener("click", () => {
-        const wrapper = wrappers[index] as HTMLElement;
+for (let i = 0; i < items.length; i++) {
+    items.item(i).addEventListener("click", () => {
+        const wrapper = wrappers[i] as HTMLElement;
         wrapper.style.display = "block";
     });
-});
+};

@@ -3,11 +3,11 @@ import { cart } from "./dataIO";
 
 var cartItems = cart || [];
 
-export function addToCart(button: Element, item: any) {
-    var quantity = parseInt((button?.previousElementSibling as HTMLInputElement).value);
+export function addToCart(button: Element, item: string) {
+    const quantity = (button.previousElementSibling as HTMLInputElement).valueAsNumber;
 
-    var existingCartItem = cartItems.find(
-        (cartItem: { id: any; }) => cartItem.id === item
+    const existingCartItem = cartItems.find(
+        (cartItem: { id: string; }) => cartItem.id === item
     );
     if (existingCartItem) {
         existingCartItem.quantity += quantity;

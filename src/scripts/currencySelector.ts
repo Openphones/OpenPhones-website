@@ -1,6 +1,6 @@
-var currencySelector = document.getElementById("currency") as HTMLSelectElement;
+const currencySelector = document.getElementById("currency") as HTMLSelectElement;
 currencySelector.value = localStorage.getItem("currency") || "USD";
-currencySelector!.addEventListener("change", () => {
-    localStorage.setItem("currency", currencySelector!.value);
+currencySelector.addEventListener("change", () => {
+    localStorage.setItem("currency", currencySelector.value);
     location.reload();
 });

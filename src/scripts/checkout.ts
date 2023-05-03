@@ -1,16 +1,14 @@
 import { url } from "./dataIO"
 import { cart } from "./dataIO";
 
-var checkoutButton = document.getElementById("checkout")
-checkoutButton?.addEventListener("click", checkout)
-
-async function checkout() {
+const checkoutButton = document.getElementById("checkout");
+checkoutButton?.addEventListener("click", async () => {
     var checkoutPayload = JSON.stringify({
         items: cart,
         type: "stripe",
     });
-    var stripeLink = await fetch(
-        `${url}/create-checkout-session`,
+
+    const redirect = await fetch(`${url}/create-checkout-session`,
         {
             headers: {
                 "Content-Type": "application/json",
@@ -18,7 +16,14 @@ async function checkout() {
             method: "POST",
             body: checkoutPayload,
         }
-    );
-    var redirect = await stripeLink.json();
-    window.location.href = redirect.url;
-}
+    )
+        .then(
+            r => {
+                if (!r.ok) {
+                    alert("Something has went wrong while trying to create a checkout session! :(");
+                    return null;
+                }
+                return r.json();
+            }) as { url: string; };
+    window.location.href = redirect?.url;
+});

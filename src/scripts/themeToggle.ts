@@ -1,16 +1,16 @@
-const themeToggleButton = document.getElementById("themeToggle")
+const themeToggleButton = document.getElementById("themeToggle");
 
-themeToggleButton?.addEventListener("click", themeToggle)
+themeToggleButton.addEventListener("click", themeToggle);
 
-themeToggleButton!.style.display = "initial";
-if (sessionStorage.getItem("theme") == "light") {
+themeToggleButton.style.display = "initial";
+if (sessionStorage.getItem("theme") === "light") {
     document.body.classList.add("light");
-} else if (sessionStorage.getItem("theme") == "dark") {
+} else if (sessionStorage.getItem("theme") === "dark") {
     document.body.classList.add("dark");
 }
 
 function themeToggle() {
-    if (document.body.classList.length == 0) {
+    if (document.body.classList.length === 0) {
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             sessionStorage.setItem("theme", "light");
             document.body.classList.add("light");
