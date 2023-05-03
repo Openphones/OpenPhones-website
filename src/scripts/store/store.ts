@@ -13,20 +13,16 @@ for (const product of await products) {
     store.append(item);
     store.append(popup);
 
-    const addToCartButtons = store.querySelectorAll(".add-to-cart");
-    for (let button of addToCartButtons) {
-        button.addEventListener("click", () => {
-            addToCart(button, product.id);
-            closePopup(product.id)
-        });
-    }
+    const addToCartButton = document.getElementById(`add-${product.id}`);
+    addToCartButton.addEventListener("click", () => {
+        addToCart(addToCartButton, product.id);
+        closePopup(product.id)
+    });
 
-    const closeButtons = store.querySelectorAll(".close");
-    for (let button of closeButtons) {
-        button.addEventListener("click", () => {
-            closePopup(product.id)
-        })
-    }
+    const closeButton = document.getElementById(`close-${product.id}`);
+    closeButton.addEventListener("click", () => {
+        closePopup(product.id)
+    })
 }
 
 const items = store.querySelectorAll(".store-item");
