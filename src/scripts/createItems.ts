@@ -12,19 +12,19 @@ for (const product of await products) {
     store.append(popup);
 
     const addToCartButtons = store.querySelectorAll(".add-to-cart");
-    addToCartButtons.forEach((button) => {
+    for (let button of addToCartButtons) {
         button.addEventListener("click", () => {
             addToCart(button, product.id);
             closePopup(product.id)
         });
-    })
+    }
 
     const closeButtons = store.querySelectorAll(".close");
-    closeButtons.forEach((button) => {
+    for (let button of closeButtons) {
         button.addEventListener("click", () => {
             closePopup(product.id)
         })
-    })
+    }
 }
 
 function createItems(product: IProduct) {

@@ -1,7 +1,7 @@
 import { updateCart } from "./updateCart";
 import { cart } from "./dataIO";
 
-var cartItems = cart || [];
+const cartItems = cart;
 
 export function addToCart(button: Element, item: string) {
     const quantity = (button.previousElementSibling as HTMLInputElement).valueAsNumber;
@@ -15,8 +15,7 @@ export function addToCart(button: Element, item: string) {
         cartItems.push({ id: item, quantity: quantity });
     }
 
-    var cart = JSON.stringify(cartItems);
-    localStorage.setItem("cart", cart);
+    localStorage.setItem("cart", JSON.stringify(cartItems));
 
     updateCart();
 }

@@ -1,20 +1,14 @@
 import { IProduct, cart, currencyConvert, products } from "./dataIO";
 
-(document.querySelector(".header") as HTMLElement).innerHTML = cart.length == 0
-    ? `
-<h1>Add some items to cart!</h1>`
-    : `<h1>Cart</h1>
-<h2 id="subtotal"></h2>
-<button id="checkout" type="submit">Checkout</button>
-`;
-
 if (cart.length !== 0) {
+    (document.querySelector(".header") as HTMLElement).style.display = "block";
+    (document.querySelector(".empty-cart-text") as HTMLElement).style.display = "none";
     const cartPage = document.getElementById("cart");
     const totalText = document.getElementById("subtotal");
     let total = 0;
 
-    for (var cartItem of cart) {
-        for (var link of await products) {
+    for (const cartItem of cart) {
+        for (const link of await products) {
             if (link.id == cartItem.id) {
                 cartPage.append(cartGen(cartItem.quantity, link));
                 total += link.price * cartItem.quantity;

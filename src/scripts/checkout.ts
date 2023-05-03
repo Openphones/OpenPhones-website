@@ -3,7 +3,7 @@ import { cart } from "./dataIO";
 
 const checkoutButton = document.getElementById("checkout");
 checkoutButton?.addEventListener("click", async () => {
-    var checkoutPayload = JSON.stringify({
+    const checkoutPayload = JSON.stringify({
         items: cart,
         type: "stripe",
     });

@@ -9,7 +9,12 @@ import "../styles/cart.scss";
     description="Get secure GrapheneOS phones without overpaying or sacrificing privacy."
 >
     <main>
-        <div class="header"></div>
+        <h1 class="empty-cart-text">Add some items to cart!</h1>
+        <div class="header">
+            <h1>Cart</h1>
+            <h2 id="subtotal"></h2>
+            <button id="checkout" type="submit">Checkout</button>
+        </div>
         <div id="cart"></div>
     </main>
 </BaseLayout>
@@ -23,6 +28,10 @@ import "../styles/cart.scss";
         width: 64rem;
         max-width: 88vw;
         margin: auto;
+
+        .header {
+            display: none;
+        }
     }
 </style>
 
