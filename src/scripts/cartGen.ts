@@ -2,22 +2,28 @@ import { jsonLinks } from "./dataIO";
 import { currencyConvert } from "./dataIO";
 import { cart } from "./dataIO";
 
-var cartPage = document.getElementById("cart");
-var subtotal = 0;
-var total = document.getElementById("subtotal");
+var header = document.querySelector(".header") as HTMLElement;
+header.innerHTML = cart.length == 0
+    ? `
+<h1>Add some items to cart!</h1>`
+    : `<h1>Cart</h1>
+<h2 id="subtotal"></h2>
+<button id="checkout" type="submit">Checkout</button>
+`
 
-if (cart.length == 0) {
-    document.getElementById("checkout")!.style.display = "none";
-    total!.previousElementSibling!.innerHTML = "Add some items to cart!";
-} else {
-    cart.forEach((cartItem: { id: any; quantity: number; }) => {
-        for (var link of jsonLinks) {
+if (cart.length != 0) {
+    var cartPage = document.getElementById("cart");
+    var subtotal = 0;
+    var total = document.getElementById("subtotal");
+
+    for (var cartItem of cart) {
+        for (var link of await jsonLinks) {
             if (link["id"] == cartItem.id) {
                 cartPage!.append(cartGen(cartItem, link));
                 subtotal += link["price"] * cartItem.quantity;
             }
         }
-    });
+    }
 
     total!.innerHTML = `Subtotal: ${currencyConvert(subtotal)}`;
 }

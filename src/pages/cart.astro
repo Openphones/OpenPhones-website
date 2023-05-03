@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-import "../styles/cart-item.scss"
+import "../styles/cart.scss";
 ---
 
 <BaseLayout
@@ -9,11 +9,7 @@ import "../styles/cart-item.scss"
     description="Get secure GrapheneOS phones without overpaying or sacrificing privacy."
 >
     <main>
-        <div class="header">
-            <h1>Cart</h1>
-            <h2 id="subtotal"></h2>
-            <button id="checkout" type="submit">Checkout</button>
-        </div>
+        <div class="header"></div>
         <div id="cart"></div>
     </main>
 </BaseLayout>
@@ -27,31 +23,6 @@ import "../styles/cart-item.scss"
         width: 64rem;
         max-width: 88vw;
         margin: auto;
-
-        button {
-            cursor: pointer;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--gradient);
-            border: none;
-            color: var(--button-text);
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            transition: all 0.25s;
-            font-size: 1.25rem;
-
-            &:hover {
-                box-shadow: 0 0 1rem 0 var(--item-bg);
-            }
-        }
-
-        #cart {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            text-align: initial;
-        }
     }
 </style>
 

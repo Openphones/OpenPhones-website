@@ -5,7 +5,7 @@ import { closePopup } from "./closePopup";
 
 var store = document.getElementById("store");
 
-for (var link of jsonLinks) {
+for (var link of await jsonLinks) {
     var item = createItems();
     var popup = createPopups();
 
