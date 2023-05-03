@@ -14,26 +14,42 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             We collect the minimum amount of personal information necessary to
             complete transactions. We do not share your information with third
             parties except for the purposes of processing payments and
-            completing transactions. Our third-party service providers include
-            OVH for hosting (<a
-                href="https://www.ovh.com/us/support/termsofservice/#personal-data-protection"
-                >Terms & conditions - OVHcloud</a
-            >), Cloudflare for CDN and DDoS protection (<a
-                href="https://www.cloudflare.com/privacypolicy/"
-                >Cloudflare's Privacy Policy | Cloudflare</a
-            >), Stripe for payment processing (<a
-                href="https://stripe.com/privacy">Privacy Policy - Stripe</a
-            >), Coinbase for cryptocurrency transactions (<a
-                href="https://www.coinbase.com/legal/privacy"
-                >Coinbase Global Privacy Policy</a
-            >), Pirateship for shipping in the US (<a
-                href="https://ship.pirateship.com/privacy"
-                >Privacy Policy - Pirate Ship</a
-            >) and Parcelmonkey for international shipping (<a
-                href="https://www.parcelmonkey.com/privacy"
-                >Information regarding our Privacy Policy | Parcel Monkey</a
-            >). By using our website, you consent to our privacy policy.
+            completing transactions. Our third-party service providers include:
         </p>
+        <ul>
+            <li>
+                <a
+                    href="https://www.ovh.com/us/support/termsofservice/#personal-data-protection"
+                    >OVH for hosting</a
+                >,
+            </li>
+            <li>
+                <a href="https://www.cloudflare.com/privacypolicy/"
+                    >Cloudflare for CDN and DDoS protection</a
+                >,
+            </li>
+            <li>
+                <a href="https://stripe.com/privacy"
+                    >Stripe for payment processing</a
+                >,
+            </li>
+            <li>
+                <a href="https://www.coinbase.com/legal/privacy"
+                    >Coinbase for cryptocurrency transactions</a
+                >,
+            </li>
+            <li>
+                <a href="https://ship.pirateship.com/privacy"
+                    >Pirateship for shipping in the US</a
+                >, and
+            </li>
+            <li>
+                <a href="https://www.parcelmonkey.com/privacy"
+                    >Parcelmonkey for international shipping</a
+                >.
+            </li>
+        </ul>
+        <p>By using our website, you consent to our privacy policy.</p>
 
         <h2 id="terms-of-service">Terms of Service</h2>
         <p>
@@ -61,6 +77,17 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
         h1 {
             text-align: center;
+        }
+
+        ul {
+            padding-left: 1.5rem;
+            list-style-type: circle;
+            text-align: left;
+            margin: 0;
+
+            li {
+                margin: 0.5rem 0;
+            }
         }
 
         a {
