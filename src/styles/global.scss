@@ -1,13 +1,18 @@
 @use "colors";
 
+// Font
+@font-face {
+    font-family: 'Inter';
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: oblique 0deg 10deg;
+    src: url("/font/Inter.var.woff2") format("woff2");
+}
+
 // Root
 * {
     box-sizing: border-box;
     font-family: "Inter", sans-serif;
-
-    @supports (font-variation-settings: normal) {
-        font-family: "Inter var", sans-serif;
-    }
 }
 
 body {
