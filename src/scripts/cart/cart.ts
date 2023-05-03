@@ -1,5 +1,7 @@
 import { cart, currencyConvert, products, url } from "../dataIO";
 import { cartGen } from "./cartGen";
+import { removeItem } from "./removeItem";
+import { updateQuantity } from "./updateQuantity";
 
 if (cart.length !== 0) {
     (document.querySelector(".header") as HTMLElement).style.display = "block";
@@ -12,12 +14,20 @@ if (cart.length !== 0) {
         cartItemsById[cartItem.id] = cartItem;
     }
 
-    for (const link of await products) {
-        const cartItem = cartItemsById[link.id]
+    for (const product of await products) {
+        const cartItem = cartItemsById[product.id]
 
-        if (link.id) {
-            document.getElementById("cart").append(cartGen(cartItem.quantity, link));
-            total += link.price * cartItem.quantity;
+        if (cartItem) {
+            document.getElementById("cart").append(cartGen(cartItem.quantity, product));
+            total += product.price * cartItem.quantity;
+
+            document.getElementById(`remove-${product.id}`).addEventListener("click", () => {
+                removeItem(product.id);
+            })
+
+            document.getElementById(`quantity-${product.id}`).addEventListener("change", () => {
+                updateQuantity(document.getElementById(`quantity-${product.id}`) as HTMLInputElement, product.id)
+            })
         }
     }
 

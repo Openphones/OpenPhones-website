@@ -50,6 +50,22 @@
         flex-direction: column;
         text-align: justify;
 
+        button {
+            width: fit-content;
+            align-self: end;
+            cursor: pointer;
+            background: var(--bg);
+            border: none;
+            color: var(--button-text);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.25s;
+
+            &:hover {
+                box-shadow: 0 0 1rem 0 var(--bg);
+            }
+        }
+
         h2 {
             margin-top: 0;
         }
@@ -62,9 +78,20 @@
                 position: static;
                 align-self: initial;
             }
+
+            input {
+                border: 1px solid var(--variant);
+                border-radius: 0.5rem;
+                background-color: var(--bg);
+                padding: 0.5rem 0;
+                color: var(--text);
+                width: 3rem;
+                text-align: center;
+            }
         }
 
         p {
+            flex-grow: 1;
             overflow: hidden;
             text-overflow: ellipsis;
 

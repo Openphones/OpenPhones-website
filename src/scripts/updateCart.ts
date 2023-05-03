@@ -7,7 +7,8 @@ export function updateCart() {
     for (const key of cart) {
         cartArray.push(key.quantity);
     }
-    cartBadge.innerHTML = cartArray.reduce((a, b) => a + b);
+
+    cartBadge.innerHTML = cartArray.length !== 0 ? cartArray.reduce((a, b) => a + b) : "0";
 }
 
 localStorage.getItem("cart") ? updateCart() : "";
