@@ -10,4 +10,4 @@ export function currencyConvert(value: number) {
 }
 
 var cartArray = JSON.parse(localStorage.getItem("cart")!)
-export var cart = cartArray ? cartArray : []
+export var cart = cartArray || []
