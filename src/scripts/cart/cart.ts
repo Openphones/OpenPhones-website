@@ -6,12 +6,18 @@ if (cart.length !== 0) {
     (document.querySelector(".empty-cart-text") as HTMLElement).style.display = "none";
     let total = 0;
 
+    let cartItemsById = {}
+
     for (const cartItem of cart) {
-        for (const link of await products) {
-            if (link.id == cartItem.id) {
-                document.getElementById("cart").append(cartGen(cartItem.quantity, link));
-                total += link.price * cartItem.quantity;
-            }
+        cartItemsById[cartItem.id] = cartItem;
+    }
+
+    for (const link of await products) {
+        const cartItem = cartItemsById[link.id]
+
+        if (link.id) {
+            document.getElementById("cart").append(cartGen(cartItem.quantity, link));
+            total += link.price * cartItem.quantity;
         }
     }
 
