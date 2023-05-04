@@ -13,11 +13,15 @@ for (const product of await products) {
     const popup = createPopups(product);
 
     if (product.stock) {
-        inStock.append(item)
-        inStock.append(popup)
+        inStock.append(item);
+        inStock.append(popup);
+
+        let quantitySelector = document.getElementById(`quantity-${product.id}`);
+        quantitySelector.previousElementSibling.remove();
+        quantitySelector.remove();
     } else {
-        customOrder.append(item)
-        customOrder.append(popup)
+        customOrder.append(item);
+        customOrder.append(popup);
     }
 
     const addToCartButton = document.getElementById(`add-${product.id}`);

@@ -19,10 +19,16 @@ if (cart.length !== 0) {
                 calculateSubtotal();
             })
 
-            document.getElementById(`quantity-${item.id}`).addEventListener("change", () => {
-                updateQuantity(document.getElementById(`quantity-${item.id}`) as HTMLInputElement, item.id)
-                calculateSubtotal();
-            })
+            if (item.stock) {
+                let quantity = document.getElementById(`quantity-${item.id}`)
+                quantity.parentElement.innerHTML = `1 × ${currencyConvert(item.price)}`
+                quantity.remove();
+            } else {
+                document.getElementById(`quantity-${item.id}`).addEventListener("change", () => {
+                    updateQuantity(document.getElementById(`quantity-${item.id}`) as HTMLInputElement, item.id)
+                    calculateSubtotal();
+                })
+            }
         }
     }
 
