@@ -1,5 +1,6 @@
 import { cart } from "../dataIO";
 import { updateCart } from "../updateCart";
+import { removeItem } from "./removeItem";
 
 export function updateQuantity(input: HTMLInputElement, id: string) {
     const cartItem = cart.find((item) => item.id === id);
@@ -7,5 +8,9 @@ export function updateQuantity(input: HTMLInputElement, id: string) {
     cartItem.quantity = input.valueAsNumber
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    updateCart()
+    if (cartItem.quantity <= 0) {
+        removeItem(id);
+    } else {
+        updateCart()
+    }
 }
