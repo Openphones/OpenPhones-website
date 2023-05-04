@@ -55,14 +55,14 @@
             align-self: end;
             cursor: pointer;
             background: var(--bg);
-            border: none;
-            color: var(--button-text);
+            border: 1px solid var(--variant);
+            color: var(--text);
             padding: 0.5rem;
             border-radius: 0.5rem;
             transition: all 0.25s;
 
             &:hover {
-                box-shadow: 0 0 1rem 0 var(--bg);
+                box-shadow: 0 0 1rem 0 var(--variant);
             }
         }
 
