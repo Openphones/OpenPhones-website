@@ -1,11 +1,11 @@
 export interface IProduct {
     id: string;
-    short_name: string;
     long_name: string;
-    price: number;
-    images: string[];
-    quality: string;
+    short_name: string;
     description: string;
+    price: number;
+    quality: string;
+    images: string[];
     stock: boolean;
 }
 
