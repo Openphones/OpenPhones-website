@@ -1,4 +1,5 @@
 import { cart, currencyConvert, products, url } from "../dataIO";
+import { calculateSubtotal } from "./calculateSubtotal";
 import { cartGen } from "./cartGen";
 import { removeItem } from "./removeItem";
 import { updateQuantity } from "./updateQuantity";
@@ -6,32 +7,26 @@ import { updateQuantity } from "./updateQuantity";
 if (cart.length !== 0) {
     (document.querySelector(".header") as HTMLElement).style.display = "block";
     (document.querySelector(".empty-cart-text") as HTMLElement).style.display = "none";
-    let total = 0;
-
-    let cartItemsById = {}
 
     for (const cartItem of cart) {
-        cartItemsById[cartItem.id] = cartItem;
-    }
+        const matchedItems = [(await products).find((product) => product.id == cartItem.id)]
 
-    for (const product of await products) {
-        const cartItem = cartItemsById[product.id]
+        for (const item of matchedItems) {
+            document.getElementById("cart").append(cartGen(cartItem.quantity, item));
 
-        if (cartItem) {
-            document.getElementById("cart").append(cartGen(cartItem.quantity, product));
-            total += product.price * cartItem.quantity;
-
-            document.getElementById(`remove-${product.id}`).addEventListener("click", () => {
-                removeItem(product.id);
+            document.getElementById(`remove-${item.id}`).addEventListener("click", () => {
+                removeItem(item.id);
+                calculateSubtotal();
             })
 
-            document.getElementById(`quantity-${product.id}`).addEventListener("change", () => {
-                updateQuantity(document.getElementById(`quantity-${product.id}`) as HTMLInputElement, product.id)
+            document.getElementById(`quantity-${item.id}`).addEventListener("change", () => {
+                updateQuantity(document.getElementById(`quantity-${item.id}`) as HTMLInputElement, item.id)
+                calculateSubtotal();
             })
         }
     }
 
-    document.getElementById("subtotal").innerHTML = `Subtotal: ${currencyConvert(total)}`;
+    calculateSubtotal()
 }
 
 document.getElementById("checkout").addEventListener("click", async () => {
