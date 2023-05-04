@@ -8,7 +8,7 @@ export function createItems(product: IProduct) {
         <img src="${product.images[0]}" alt="${product.long_name}"/>
         <h3>${product.short_name} (${product.quality})</h3>
         <b>${currencyConvert(product.price)}</b>
-        <p>${product.description}</p>
+        <p>${product.description.replaceAll("\n", "<br />")}</p>
         `;
 
     return item;

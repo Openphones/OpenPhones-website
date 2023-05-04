@@ -10,7 +10,7 @@ export function createPopups(product: IProduct) {
         <div class="details">
             <h2>${product.long_name}</h2>
             <b>${currencyConvert(product.price)}</b>
-            <p>${product.description}</p>
+            <p>${product.description.replaceAll("\n", "<br />")}</p>
             <div class="purchase">
                 <label for="quantity-${product.id}">Quantity:</label>
                 <input type="number" id="quantity-${product.id}" value="1" min="1"/>

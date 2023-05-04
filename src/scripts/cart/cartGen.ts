@@ -8,7 +8,7 @@ export function cartGen(quantity: number, product: IProduct) {
         <img src="${product.images[0]}" alt="${product.long_name}" />
         <div class="details">
             <h2>${product.long_name}</h2>
-            <p>${product.description}</p>
+            <p>${product.description.replaceAll("\n", "<br />")}</p>
             <div class="price">
                 <b><input type="number" id="quantity-${product.id}" value="${quantity}" min="1" title="Quantity" /> × ${currencyConvert(product.price)}</b>
             </div>
