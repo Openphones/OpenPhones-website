@@ -5,13 +5,20 @@ import { createItems } from "./createItems";
 import { createPopups } from "./createPopups";
 
 const store = document.getElementById("store");
+const inStock = document.getElementById("in-stock");
+const customOrder = document.getElementById("custom-order")
 
 for (const product of await products) {
     const item = createItems(product);
     const popup = createPopups(product);
 
-    store.append(item);
-    store.append(popup);
+    if (product.stock) {
+        inStock.append(item)
+        inStock.append(popup)
+    } else {
+        customOrder.append(item)
+        customOrder.append(popup)
+    }
 
     const addToCartButton = document.getElementById(`add-${product.id}`);
     addToCartButton.addEventListener("click", () => {
