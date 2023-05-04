@@ -30,8 +30,7 @@ for (const product of await products) {
         closePopup(product.id)
     });
 
-    const closeButton = document.getElementById(`close-${product.id}`);
-    closeButton.addEventListener("click", () => {
+    document.getElementById(`close-${product.id}`).addEventListener("click", () => {
         closePopup(product.id)
     })
 }
