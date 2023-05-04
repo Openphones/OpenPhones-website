@@ -6,7 +6,7 @@ import { updateQuantity } from "./updateQuantity";
 
 if (cart.length !== 0) {
     (document.querySelector(".header") as HTMLElement).style.display = "block";
-    (document.querySelector(".empty-cart-text") as HTMLElement).style.display = "none";
+    document.querySelector(".empty-cart-text").remove();
 
     for (const cartItem of cart) {
         const matchedItems = [(await products).find((product) => product.id == cartItem.id)]

@@ -6,7 +6,7 @@ export function removeItem(id: string) {
 
     cart.splice(index, 1)
 
-    document.getElementById(id).style.display = "none";
+    document.getElementById(id).remove();
     localStorage.setItem("cart", JSON.stringify(cart));
 
     updateCart();
