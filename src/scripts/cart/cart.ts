@@ -56,5 +56,5 @@ document.getElementById("checkout").addEventListener("click", async () => {
                 }
                 return r.json();
             }) as { url: string; };
-    window.location.href = redirect?.url;
+    window.location.href = redirect.url ? redirect.url : "/cancel";
 });
