@@ -18,6 +18,9 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - name: Check
+        run: npx astro check
+
       - name: Upload to SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:

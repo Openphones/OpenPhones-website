@@ -13,3 +13,5 @@ jobs:
         run: npm install
       - name: Build app
         run: npm run build
+      - name: Check
+        run: npx astro check
