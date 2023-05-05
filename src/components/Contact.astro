@@ -2,7 +2,7 @@
 const { location } = Astro.props;
 ---
 
-<div class={location == "footer" ? "contact" : ""}>
+<div class={location == "footer" ? "footer" : ""}>
     {
         location == "footer" ? (
             <b>Contact Us</b>
@@ -76,13 +76,14 @@ const { location } = Astro.props;
             }
 
             svg {
-                height: 0.75rem;
+                height: 1rem;
                 padding-right: 0.25rem;
+                transition: 0.25s;
             }
         }
     }
 
-    .contact {
+    .footer {
         span {
             display: flex;
             flex-direction: row;
@@ -92,6 +93,10 @@ const { location } = Astro.props;
 
             a {
                 font-size: 0;
+
+                svg:hover {
+                    fill: var(--link);
+                }
             }
         }
 
