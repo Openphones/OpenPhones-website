@@ -53,3 +53,20 @@ svg {
     border-radius: 0.5rem;
     border: solid 0.375rem var(--bg);
 }
+
+// Custom styles
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.imei {
+    text-decoration: underline;
+}

@@ -1,4 +1,5 @@
 import { IProduct, currencyConvert } from "../dataIO";
+import { writeDescription } from "../writeDescription";
 import { generateCarousel } from "./createCarousel";
 
 export function createPopups(product: IProduct) {
@@ -9,8 +10,8 @@ export function createPopups(product: IProduct) {
     <div class="popup">
         <div class="details">
             <h2>${product.long_name}</h2>
-            <b>${currencyConvert(product.price)}</b>
-            <p>${product.description.replaceAll("\n", "<br />")}</p>
+            <span class="bold">${currencyConvert(product.price)}</span>
+            <p>${writeDescription(product.description)}</p>
             <div class="purchase">
                 <label for="quantity-${product.id}">Quantity:</label>
                 <input type="number" id="quantity-${product.id}" value="1" min="1"/>

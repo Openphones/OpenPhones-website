@@ -21,7 +21,7 @@ export const url = location.origin.endsWith(".onion") ? "http://nrnd5rs5aut37ny3
 export const products = fetch(`${url}/products?currency=${currency}`).then(r => r.json() as Promise<IProduct[]>)
 
 export function currencyConvert(value: number) {
-    return new Intl.NumberFormat("en", { style: "currency", currency: currency }).format(value)
+    return new Intl.NumberFormat(navigator.language, { style: "currency", currency: currency }).format(value)
 }
 
 export const cart = JSON.parse(localStorage.getItem("cart")) as ICartItem[] || new Array<ICartItem>();
