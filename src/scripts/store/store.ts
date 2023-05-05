@@ -1,5 +1,5 @@
 import { addToCart } from "./addToCart";
-import { products } from "../dataIO";
+import { cart, products } from "../dataIO";
 import { closePopup } from "./closePopup";
 import { createItems } from "./createItems";
 import { createPopups } from "./createPopups";
@@ -26,7 +26,14 @@ for (const product of await products) {
 
     const addToCartButton = document.getElementById(`add-${product.id}`);
     addToCartButton.addEventListener("click", () => {
-        addToCart(addToCartButton, product.id);
+        const existingCartItem = cart.find((cartItem) => cartItem.id === product.id)
+
+        if (existingCartItem) {
+            alert("Item is already in cart.")
+        } else {
+            addToCart(addToCartButton, product.id);
+        }
+
         closePopup(product.id)
     });
 
