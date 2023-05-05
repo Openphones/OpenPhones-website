@@ -1,4 +1,5 @@
 import { IProduct, currencyConvert } from "../dataIO";
+import { generateCarousel } from "./createCarousel";
 
 export function createPopups(product: IProduct) {
     const wrapper = document.createElement("div");
@@ -6,7 +7,6 @@ export function createPopups(product: IProduct) {
     wrapper.classList.add("wrapper");
     wrapper.innerHTML = `
     <div class="popup">
-        <img src="${product.images[0]}" alt="${product.long_name}" />
         <div class="details">
             <h2>${product.long_name}</h2>
             <b>${currencyConvert(product.price)}</b>
@@ -25,6 +25,8 @@ export function createPopups(product: IProduct) {
             ></button
         >
     </div>`;
+
+    wrapper.firstElementChild.prepend(generateCarousel(product))
 
     return wrapper;
 }
