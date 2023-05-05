@@ -14,12 +14,12 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        
+      - name: Check
+        run: npx astro check
 
       - name: Build app
         run: npm run build
-
-      - name: Check
-        run: npx astro check
 
       - name: Upload to SFTP
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
