@@ -1,6 +1,6 @@
 import { IProduct } from "../dataIO";
 
-export function generateCarousel(product: IProduct) {
+export function createCarousel(product: IProduct) {
     const carouselContainer = document.createElement("div")
     carouselContainer.classList.add("carousel")
     carouselContainer.id = `${product.id}-images`

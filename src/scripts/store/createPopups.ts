@@ -1,6 +1,6 @@
 import { IProduct, currencyConvert } from "../dataIO";
 import { writeDescription } from "../writeDescription";
-import { generateCarousel } from "./createCarousel";
+import { createCarousel } from "./createCarousel";
 
 export function createPopups(product: IProduct) {
     const wrapper = document.createElement("div");
@@ -27,7 +27,7 @@ export function createPopups(product: IProduct) {
         >
     </div>`;
 
-    wrapper.firstElementChild.prepend(generateCarousel(product))
+    wrapper.firstElementChild.prepend(createCarousel(product))
 
     return wrapper;
 }
