@@ -6,10 +6,11 @@ export function addToCart(item: string, quantity: number, size: number, color: s
     const itemProps = { id: item, quantity: quantity, overrides: { color: color, size: size } }
 
     const existingCartItem = cart.find(
-        (cartItem) => cartItem === itemProps
+        (cartItem) => cartItem.id === itemProps.id && JSON.stringify(cartItem.overrides) === JSON.stringify(itemProps.overrides)
     );
     if (existingCartItem) {
         existingCartItem.quantity += quantity;
+        closePopup(item)
     } else {
         if (size !== null && color !== "") {
             cart.push(itemProps);
