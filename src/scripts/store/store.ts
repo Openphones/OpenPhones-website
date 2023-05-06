@@ -24,22 +24,24 @@ for (const product of await products) {
         customOrder.append(popup);
     }
 
-    const addToCartButton = document.getElementById(`add-${product.id}`);
+    const customisationSection = document.getElementById(`customisation-${product.id}`) as HTMLDivElement
+    const addToCartButton = customisationSection.querySelector(".add-to-cart")
+
     addToCartButton.addEventListener("click", () => {
+        const selectedStorage = parseInt((customisationSection.querySelector(".storage-select") as HTMLSelectElement).selectedOptions[0].value)
+        const selectedColor = !Number.isNaN(selectedStorage) ? (customisationSection.querySelector(".color-select") as HTMLSelectElement).selectedOptions[0].value : "";
+        const quantityInput = customisationSection.querySelector(`#quantity-${product.id}`) as HTMLInputElement
+        const quantity = quantityInput ? quantityInput.valueAsNumber : 1
+
         const existingCartItem = cart.find((cartItem) => cartItem.id === product.id)
 
-        if (existingCartItem) {
+        if (existingCartItem && product.stock) {
             alert("Item is already in cart.")
+            closePopup(product.id)
         } else {
-            addToCart(addToCartButton, product.id);
+            addToCart(product.id, quantity, selectedStorage, selectedColor);
         }
-
-        closePopup(product.id)
     });
-
-    document.getElementById(`close-${product.id}`).addEventListener("click", () => {
-        closePopup(product.id)
-    })
 }
 
 const items = store.querySelectorAll(".store-item");

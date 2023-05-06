@@ -7,11 +7,34 @@ export interface IProduct {
     quality: string;
     images: string[];
     stock: boolean;
+    overrides: {
+        color: IProductColor[]
+        storage: IProductStorage[]
+    }
 }
 
 export interface ICartItem {
     id: string;
     quantity: number;
+    overrides: ICartItemOverrides
+}
+
+export interface IProductColor {
+    name: string
+    color: string
+    readable: string
+}
+
+export interface IProductStorage {
+    size: number
+    name: string
+    price: number
+    colorcomp: string[]
+}
+
+interface ICartItemOverrides {
+    color: string
+    size: number
 }
 
 const currency = localStorage.getItem("currency") || "USD";
