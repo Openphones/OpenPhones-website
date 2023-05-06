@@ -2,8 +2,8 @@ import { updateCart } from "../updateCart";
 import { cart } from "../dataIO";
 import { closePopup } from "./closePopup";
 
-export function addToCart(item: string, quantity: number, storage: number, color: string) {
-    const itemProps = { id: item, quantity: quantity, override: { color: color, storage: storage } }
+export function addToCart(item: string, quantity: number, size: number, color: string) {
+    const itemProps = { id: item, quantity: quantity, overrides: { color: color, size: size } }
 
     const existingCartItem = cart.find(
         (cartItem) => cartItem === itemProps
@@ -11,7 +11,7 @@ export function addToCart(item: string, quantity: number, storage: number, color
     if (existingCartItem) {
         existingCartItem.quantity += quantity;
     } else {
-        if (storage !== null && color !== "") {
+        if (size !== null && color !== "") {
             cart.push(itemProps);
             closePopup(item)
         } else {

@@ -16,9 +16,9 @@ export interface IProduct {
 export interface ICartItem {
     id: string;
     quantity: number;
-    override: {
+    overrides: {
         color: string
-        storage: number
+        size: number
     }
 }
 
