@@ -86,6 +86,11 @@
                     flex-grow: 1;
                     max-height: none;
                 }
+
+                &::-webkit-scrollbar-thumb {
+                    background: var(--bg);
+                    border: solid 0.375rem var(--item-bg);
+                }
             }
         }
 
