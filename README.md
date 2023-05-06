@@ -22,6 +22,6 @@ The licenses of all npm dependencies are in their respective folders in `node_mo
 
 The icons come from [Material Symbols](https://fonts.google.com/icons) and are licensed under the [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0.html). The [Wire](https://wire.com) logo comes from their [brand guidelines](https://brand.wire.com/). The [Matrix](https://matrix.org/) icon comes from [Simple Icons](https://simpleicons.org/).
 
-The [Inter](https://rsms.me/inter/) font is licensed under the [OFL-1.1 license](https://github.com/rsms/inter/blob/master/LICENSE.txt)
+The [Inter](https://rsms.me/inter/) font is licensed under the [OFL-1.1 license](https://github.com/rsms/inter/blob/master/LICENSE.txt).
 
 All of the remaining content in this repository is licensed under the [BSD Zero Clause license](LICENSE). The favicon was designed by [noClaps](https://github.com/noClaps) and is under the [CC0-1.0 license](/public/icon/LICENSE).
