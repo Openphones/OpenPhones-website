@@ -16,7 +16,10 @@ export interface IProduct {
 export interface ICartItem {
     id: string;
     quantity: number;
-    overrides: ICartItemOverrides
+    override: {
+        color: string
+        storage: number
+    }
 }
 
 export interface IProductColor {
@@ -30,11 +33,6 @@ export interface IProductStorage {
     name: string
     price: number
     colorcomp: string[]
-}
-
-interface ICartItemOverrides {
-    color: string
-    size: number
 }
 
 const currency = localStorage.getItem("currency") || "USD";

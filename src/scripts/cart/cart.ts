@@ -11,8 +11,8 @@ if (cart.length !== 0) {
         const matchedItems = [(await products).find((product) => product.id == cartItem.id)]
 
         for (const item of matchedItems) {
-            const itemColor = item.overrides.color.find((color) => color.name === cartItem.overrides.color)
-            const itemStorage = item.overrides.storage.find((storage) => storage.size === cartItem.overrides.size)
+            const itemColor = item.overrides.color.find((color) => color.name === cartItem.override.color)
+            const itemStorage = item.overrides.storage.find((storage) => storage.size === cartItem.override.storage)
 
             document.getElementById("cart").append(cartGen(cartItem.quantity, item, itemStorage, itemColor));
 

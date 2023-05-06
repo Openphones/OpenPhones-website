@@ -3,7 +3,7 @@ import { cart } from "../dataIO";
 import { closePopup } from "./closePopup";
 
 export function addToCart(item: string, quantity: number, storage: number, color: string) {
-    const itemProps = { id: item, quantity: quantity, overrides: { color: color, size: storage } }
+    const itemProps = { id: item, quantity: quantity, override: { color: color, storage: storage } }
 
     const existingCartItem = cart.find(
         (cartItem) => cartItem === itemProps
