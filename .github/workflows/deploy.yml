@@ -10,10 +10,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3.5.2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@3
+        with:
+          node-version: latest
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         
       - name: Check
         run: npx astro check

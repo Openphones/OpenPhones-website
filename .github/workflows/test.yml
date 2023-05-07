@@ -7,9 +7,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
-        uses: actions/checkout@v3
-      - name: Install dependencies
-        run: npm install
-      - name: Check
-        run: npx astro check
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@3
+        with:
+          node-version: latest
+          cache: 'npm'
+      - run: npm ci
+      - run: npx astro check
