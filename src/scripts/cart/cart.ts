@@ -8,28 +8,28 @@ if (cart.length !== 0) {
     document.querySelector(".empty-cart-text").remove();
 
     for (const cartItem of cart) {
-        const matchedItems = [(await products).find((product) => product.id == cartItem.id)]
+        const matchedItems = [(await products).find((product) => product.id == cartItem.id)];
 
         for (const item of matchedItems) {
-            const itemColor = item.overrides.color.find((color) => color.name === cartItem.overrides.color)
-            const itemStorage = item.overrides.storage.find((storage) => storage.size === cartItem.overrides.size)
+            const itemColor = item.overrides.color.find((color) => color.name === cartItem.overrides.color);
+            const itemStorage = item.overrides.storage.find((storage) => storage.size === cartItem.overrides.size);
 
             document.getElementById("cart").append(cartGen(cartItem.quantity, item, itemStorage, itemColor));
 
             if (item.stock) {
-                let quantity = document.getElementById(`quantity-${item.id}-${itemColor.name}`)
-                quantity.parentElement.innerHTML = `1 × ${currencyConvert(item.price)}`
+                const quantity = document.getElementById(`quantity-${item.id}-${itemColor.name}`);
+                quantity.parentElement.innerHTML = `1 × ${currencyConvert(item.price)}`;
                 quantity.remove();
             } else {
                 document.getElementById(`quantity-${item.id}-${itemColor.name}`).addEventListener("change", () => {
-                    updateQuantity(document.getElementById(`quantity-${item.id}-${itemColor.name}`) as HTMLInputElement, item.id, itemColor.name)
+                    updateQuantity(document.getElementById(`quantity-${item.id}-${itemColor.name}`) as HTMLInputElement, item.id, itemColor.name);
                     calculateSubtotal();
-                })
+                });
             }
         }
     }
 
-    calculateSubtotal()
+    calculateSubtotal();
 }
 
 document.getElementById("checkout").addEventListener("click", async () => {

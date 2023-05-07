@@ -1,4 +1,4 @@
-import { IProduct, cart, currencyConvert } from "../dataIO";
+import { IProduct, currencyConvert } from "../dataIO";
 import { writeDescription } from "../writeDescription";
 import { closePopup } from "./closePopup";
 import { createCarousel } from "./createCarousel";
@@ -31,14 +31,14 @@ export function createPopups(product: IProduct) {
         >
     </div>`;
 
-    wrapper.firstElementChild.prepend(createCarousel(product))
+    wrapper.firstElementChild.prepend(createCarousel(product));
 
-    const customisationSection = wrapper.querySelector(".customisation") as HTMLDivElement
-    customisationSection.prepend(createOverrides(product))
+    const customisationSection = wrapper.querySelector(".customisation") as HTMLDivElement;
+    customisationSection.prepend(createOverrides(product));
 
     wrapper.querySelector(`.close`).addEventListener("click", () => {
-        closePopup(product.id)
-    })
+        closePopup(product.id);
+    });
 
     return wrapper;
 }

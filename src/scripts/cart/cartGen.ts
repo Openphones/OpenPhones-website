@@ -19,16 +19,16 @@ export function cartGen(quantity: number, product: IProduct, storage: IProductSt
             <button type="button" title="Remove item" class="remove">Remove item</button>
         </div>`;
 
-    const customisation = item.querySelector(".customisation") as HTMLDivElement
+    const customisation = item.querySelector(".customisation") as HTMLDivElement;
     customisation.innerHTML = `
     <p><span class="bold">Storage:</span> ${storage.name}</p>
     <p><span class="bold">Color:</span> ${color.readable}</p>
-    `
+    `;
 
     item.querySelector(".remove").addEventListener("click", () => {
         removeItem(product.id, color.name);
         calculateSubtotal();
-    })
-    
+    });
+
     return item;
 }

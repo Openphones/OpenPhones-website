@@ -9,19 +9,19 @@ export function writeDescription(description: string) {
         .replaceAll("[/i]", "</span>")
         .replaceAll("[/u]", "</span>")
         .replaceAll("[/im]", "</a>")
-        .replaceAll("[/eol]", "</time>")
+        .replaceAll("[/eol]", "</time>");
     
-    const imeis = document.querySelectorAll(".imei") as NodeListOf<HTMLAnchorElement>
+    const imeis = document.querySelectorAll(".imei") as NodeListOf<HTMLAnchorElement>;
     for (const imei of imeis) {
-        imei.href = `https://imei.info/?imei=${imei.innerText}`
+        imei.href = `https://imei.info/?imei=${imei.innerText}`;
     }
 
-    const eols = document.querySelectorAll(".eol") as NodeListOf<HTMLTimeElement>
+    const eols = document.querySelectorAll(".eol") as NodeListOf<HTMLTimeElement>;
     for (const eol of eols) {
-        const date = new Date(eol.innerHTML)
-        eol.dateTime = date.toISOString()
-        eol.innerHTML = new Intl.DateTimeFormat(navigator.language, { dateStyle: "long" }).format(date)
+        const date = new Date(eol.innerHTML);
+        eol.dateTime = date.toISOString();
+        eol.innerHTML = new Intl.DateTimeFormat(navigator.language, { dateStyle: "long" }).format(date);
     }
     
-    return formattedDescription
+    return formattedDescription;
 }
