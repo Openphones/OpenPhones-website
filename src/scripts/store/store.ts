@@ -53,3 +53,9 @@ for (let i = 0; i < items.length; i++) {
         wrapper.style.display = "block";
     });
 }
+
+if (inStock.children.length === 0) {
+    inStock.previousElementSibling.remove();
+    inStock.previousElementSibling.remove();
+    inStock.remove();
+}
