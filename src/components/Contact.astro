@@ -2,7 +2,7 @@
 const { location } = Astro.props;
 ---
 
-<div class={location == "footer" ? "footer" : ""}>
+<div class={location == "footer" && "footer"}>
     {
         location == "footer" ? (
             <span class="bold">Contact Us</span>

@@ -29,7 +29,7 @@ for (const product of await products) {
 
     addToCartButton.addEventListener("click", () => {
         const selectedStorage = parseInt((customisationSection.querySelector(".storage-select") as HTMLSelectElement).selectedOptions[0].value);
-        const selectedColor = !Number.isNaN(selectedStorage) ? (customisationSection.querySelector(".color-select") as HTMLSelectElement).selectedOptions[0].value : "";
+        const selectedColor = !Number.isNaN(selectedStorage) && (customisationSection.querySelector(".color-select") as HTMLSelectElement).selectedOptions[0].value;
         const quantityInput = customisationSection.querySelector(`#quantity-${product.id}`) as HTMLInputElement;
         const quantity = quantityInput ? quantityInput.valueAsNumber : 1;
 

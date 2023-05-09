@@ -2,13 +2,13 @@ import { cart } from "./dataIO";
 
 export function updateCart() {
     const cartBadge = document.getElementById("cart-badge") as HTMLElement;
-    const cartArray = [];
+    let cartArray = 0;
 
     for (const key of cart) {
-        cartArray.push(key.quantity);
+        cartArray += key.quantity;
     }
 
-    cartBadge.innerHTML = cartArray.length !== 0 ? cartArray.reduce((a, b) => a + b) : "0";
+    cartBadge.innerHTML = `${cartArray}`;
 }
 
-localStorage.getItem("cart") ? updateCart() : "";
+localStorage.getItem("cart") && updateCart();
