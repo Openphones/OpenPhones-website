@@ -1,0 +1,64 @@
+---
+import { ICartItem } from "../../scripts/dataIO";
+
+interface Props {
+    id: string;
+    color: string;
+    storage: number;
+}
+
+const { id, color, storage } = Astro.props;
+const cart = JSON.parse(Astro.cookies.get("cart").value || "[]") as ICartItem[];
+---
+
+<button
+    type="button"
+    title="Remove item"
+    class="remove"
+    id={`remove-${id}-${storage}-${color}`}
+>
+    Remove item
+</button>
+
+<style lang="scss">
+    button {
+        width: fit-content;
+        align-self: end;
+        cursor: pointer;
+        background: var(--bg);
+        border: 1px solid var(--variant);
+        color: var(--text);
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.25s;
+
+        &:hover {
+            box-shadow: 0 0 1rem 0 var(--variant);
+        }
+    }
+</style>
+
+<script
+    define:vars={{
+        cart,
+        id,
+        color,
+        storage,
+    }}
+>
+    document
+        .getElementById(`remove-${id}-${storage}-${color}`)
+        .addEventListener("click", () => {
+            const index = cart.findIndex(
+                (cartItem) =>
+                    cartItem.id === id &&
+                    cartItem.overrides.color === color &&
+                    cartItem.overrides.size === storage
+            );
+            cart.splice(index, 1);
+
+            document.cookie = `cart=${JSON.stringify(cart)}`;
+
+            location.reload();
+        });
+</script>

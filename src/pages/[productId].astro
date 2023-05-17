@@ -1,0 +1,116 @@
+---
+import AddToCart from "../components/Store/AddToCart.astro";
+import Carousel from "../components/Store/Carousel.astro";
+import Overrides from "../components/Store/Overrides.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getProducts, currencyConvert } from "../scripts/dataIO";
+import { writeDescription } from "../scripts/writeDescription";
+
+const currency = Astro.cookies.get("currency").value || "USD";
+const products = await getProducts(Astro.url.hostname, currency);
+
+const { productId } = Astro.params;
+const product = products.find((product) => product.id === productId);
+if (!product) {
+    return Astro.redirect("/404");
+}
+
+const {
+    id,
+    long_name,
+    price,
+    description,
+    short_name,
+    images,
+    overrides,
+    stock,
+} = product;
+---
+
+<BaseLayout title={`${long_name} | OpenPhones`}>
+    <main>
+        {
+            images[0] !== "none" && (
+                <Carousel id={id} images={images} shortName={short_name} />
+            )
+        }
+        <div class="details">
+            <h1>{long_name}</h1>
+            <p set:html={writeDescription(description)} />
+        </div>
+        <div class="customisation">
+            <span id=`price-${id}` class="bold"
+                >{currencyConvert(price, currency)}</span
+            >
+            <Overrides id={id} overrides={overrides} shortName={short_name} />
+            <div class="purchase">
+                {
+                    !stock && (
+                        <>
+                            <label for={`quantity-${id}`}>Quantity:</label>
+                            <input
+                                type="number"
+                                name={`Quantity for ${short_name}`}
+                                id={`quantity-${id}`}
+                                value="1"
+                                min="1"
+                            />
+                        </>
+                    )
+                }
+
+                <AddToCart id={id} />
+            </div>
+        </div>
+    </main>
+</BaseLayout>
+
+<style lang="scss">
+    main {
+        display: flex;
+        justify-content: space-evenly;
+        gap: 1rem;
+        width: 88vw;
+        max-width: 64rem;
+        margin: 2rem auto;
+
+        @media (max-width: 768px) {
+            flex-direction: column;
+        }
+
+        .details {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .customisation {
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: flex-end;
+            gap: 1rem;
+
+            .purchase {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+
+                label {
+                    font-size: 1rem;
+                    cursor: text;
+                }
+
+                input {
+                    border: 1px solid var(--variant);
+                    border-radius: 0.5rem;
+                    background-color: var(--bg);
+                    padding: 0.5rem;
+                    color: var(--text);
+                    width: 4rem;
+                    text-align: center;
+                }
+            }
+        }
+    }
+</style>

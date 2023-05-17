@@ -1,0 +1,114 @@
+---
+import Contact from "../components/Contact.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About Us | OpenPhones">
+    <main>
+        <h1>About Us</h1>
+        <!-- <p>
+            Welcome to OpenPhones, your destination for an effortless,
+            low-cost, and private way to obtain a GrapheneOS phone and support
+            the project. Our mission is to offer you an alternative to the
+            overpriced and insecure options currently available on the market.
+        </p>
+
+        <p>
+            We pride ourselves on being different from other providers. Unlike
+            Nitrophone, we don't charge double MSRP for a phone that has useless
+            hardware removals. And unlike some others, we won't sell you a phone
+            that doesn't receive full security updates and runs on an insecure
+            operating system that lacks important privacy features.
+        </p>
+
+        <p>
+            We are committed to transparency and privacy, and we offer a hidden
+            service and a private way to pay via Monero for those who require
+            anonymity.
+        </p>
+
+        <p>
+            Our team consists of dedicated individuals who are passionate about
+            privacy and security. Our front-end developer, Noclaps, is a
+            19-year-old from India who uses a Graphene OS phone, likes drawing,
+            and can sing Hamilton songs pretty well. Our back-end developer,
+            Mester, is a 15-year-old from Hungary who used to be a god-tier
+            Minecraft player and is now an expert in various coding languages.
+            He keeps our localhost focused and is essentially the co-CEO of
+            OpenPhones.
+        </p>
+
+        <p>
+            Finally, there's localhost, our founder and CEO. He's a 17-year-old
+            from the US who uses a Graphene OS phone and is an aspiring CCNA. He
+            enjoys mountain biking and debunking Rob Braxman.
+        </p>
+
+        <p>
+            At OpenPhones.global, we are committed to supporting the Graphene OS
+            project by donating 20% of our profits back to the organization. We
+            provide clear breakdowns of our pricing, our front-end and back-end
+            processes, and the use cases and limitations of our site.
+        </p>
+
+        <p>
+            Thank you for choosing OpenPhones.global as your source for a
+            low-cost, private, and transparent Graphene OS phone.
+        </p> -->
+        <p>
+            Here at OpenPhones, we believe that privacy and security are basic
+            human rights. Everyone deserves a way to escape the monetization of
+            personal data done by the surveillance capitalist megacorporations
+            of today's world. This is why we started OpenPhones, with a goal to
+            provide an affordable, transparent, and privacy way to obtain
+            GrapheneOS phones to as many people as possible.
+        </p>
+        <p>
+            GrapheneOS is a private and secure operating system based on
+            Android. It is developed as a non-profit open source project. You
+            can find out more about GrapheneOS on their website: <a
+                href="https://grapheneos.org">https://grapheneos.org</a
+            >. We donate 20% of our profit to the GrapheneOS project, to support
+            their development.
+        </p>
+        <h2>Who we are</h2>
+
+        <Contact location="about" />
+    </main>
+</BaseLayout>
+
+<style lang="scss">
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 64rem;
+        max-width: 88vw;
+        margin: auto;
+        padding: 1rem 0;
+        text-align: justify;
+
+        h1 {
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 0;
+        }
+
+        a {
+            display: inline-flex;
+            align-items: center;
+            color: var(--link);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+</style>

@@ -1,0 +1,88 @@
+---
+import { ICartItem, getProducts } from "../../scripts/dataIO";
+
+const { id } = Astro.props;
+const cart = JSON.parse(Astro.cookies.get("cart").value || "[]") as ICartItem[];
+const currency = Astro.cookies.get("currency").value || "USD";
+const products = await getProducts(Astro.url.hostname, currency);
+
+const stock = products.find((product) => product.id === id).stock;
+---
+
+<button type="submit" id=`add-${id}-to-cart` title="Add to cart"
+    >Add to cart</button
+>
+<style lang="scss">
+    button {
+        cursor: pointer;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--gradient);
+        border: none;
+        color: var(--button-text);
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.25s;
+
+        &:hover {
+            box-shadow: 0 0 1rem 0 var(--variant);
+        }
+    }
+</style>
+
+<script define:vars={{ id, cart, stock }}>
+    const addToCartButton = document.getElementById(`add-${id}-to-cart`);
+
+    addToCartButton.addEventListener("click", () => {
+        const selectedStorage = parseInt(
+            document.getElementById(`storage-select-${id}`).selectedOptions[0]
+                .value
+        );
+        const selectedColor =
+            !Number.isNaN(selectedStorage) &&
+            document.getElementById(`color-select-${id}`).selectedOptions[0]
+                .value;
+        const quantity = document.getElementById(`quantity-${id}`)
+            ? document.getElementById(`quantity-${id}`).valueAsNumber
+            : 1;
+
+        const itemProps = {
+            id: id,
+            quantity: quantity,
+            overrides: { color: selectedColor, size: selectedStorage },
+        };
+
+        const existingCartItem = cart.find(
+            (cartItem) =>
+                cartItem.id === itemProps.id &&
+                JSON.stringify(cartItem.overrides) ===
+                    JSON.stringify(itemProps.overrides)
+        );
+
+        if (existingCartItem && stock) {
+            alert("Item is already in cart.");
+        } else {
+            if (existingCartItem) {
+                existingCartItem.quantity += 1;
+            } else {
+                if (!Number.isNaN(selectedStorage)) {
+                    cart.push(itemProps);
+                } else {
+                    alert("Select a storage and color option");
+                }
+            }
+
+            document.cookie = `cart=${JSON.stringify(cart)}`;
+        }
+
+        const cartBadge = document.getElementById("cart-badge");
+        let cartArray = 0;
+
+        for (const cartItem of cart) {
+            cartArray += cartItem.quantity;
+        }
+
+        cartBadge.innerHTML = `${cartArray}`;
+    });
+</script>

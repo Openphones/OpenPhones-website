@@ -1,11 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+Astro.cookies.delete("cart");
+Astro.cookies.delete("currency");
 ---
 
-<BaseLayout
-    title="Success! | OpenPhones"
-    description="Get secure GrapheneOS phones without overpaying or sacrificing privacy."
->
+<BaseLayout title="Success! | OpenPhones">
     <main>
         <h1>Success</h1>
         <h2>Your payment went through!</h2>
@@ -30,7 +30,3 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         }
     }
 </style>
-
-<script>
-    localStorage.clear();
-</script>

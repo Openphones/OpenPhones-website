@@ -1,0 +1,90 @@
+---
+import { currencyConvert, getProducts } from "../../scripts/dataIO";
+import StoreItem from "./StoreItem.astro";
+
+const currency = Astro.cookies.get("currency").value || "USD";
+const products = await getProducts(Astro.url.hostname, currency);
+---
+
+<div id="store">
+    {
+        products.find((product) => product.stock) && (
+            <>
+                <>
+                    <h2>In stock</h2>
+                    <p>
+                        You can directly order these phones, as they're already
+                        set-up and ready to go!
+                    </p>
+                </>
+                <div id="in-stock">
+                    {products.map(
+                        (product) =>
+                            product.stock && (
+                                <>
+                                    <StoreItem
+                                        image={product.images[0]}
+                                        longName={product.long_name}
+                                        shortName={product.short_name}
+                                        quality={product.quality}
+                                        price={currencyConvert(
+                                            product.price,
+                                            currency
+                                        )}
+                                        description={product.description}
+                                        id={product.id}
+                                    />
+                                </>
+                            )
+                    )}
+                </div>
+            </>
+        )
+    }
+    <h2>Custom order</h2>
+    <p>
+        If you cannot find the model you're looking for, you can order it here,
+        but shipping may take longer, since we need to get that model first.
+    </p>
+    <div id="custom-order">
+        {
+            products.map(
+                (product) =>
+                    !product.stock && (
+                        <>
+                            <StoreItem
+                                image={product.images[0]}
+                                longName={product.long_name}
+                                shortName={product.short_name}
+                                quality={product.quality}
+                                price={currencyConvert(product.price, currency)}
+                                description={product.description}
+                                id={product.id}
+                            />
+                        </>
+                    )
+            )
+        }
+    </div>
+</div>
+
+<style lang="scss">
+    #in-stock,
+    #custom-order {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+        grid-gap: 1rem;
+
+        @media (max-width: 455px) {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    p {
+        text-align: justify;
+    }
+</style>

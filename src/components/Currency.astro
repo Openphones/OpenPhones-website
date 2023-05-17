@@ -137,6 +137,8 @@ const currencies = [
     "ZAR",
     "ZMW",
 ];
+
+const currency = Astro.cookies.get("currency").value || "USD";
 ---
 
 <select id="currency" title="Currency selector">
@@ -157,13 +159,18 @@ const currencies = [
     }
 </style>
 
+<script define:vars={{ currency }}>
+    const currencySelector = document.getElementById("currency");
+    currencySelector.value = currency;
+</script>
+
 <script>
     const currencySelector = document.getElementById(
         "currency"
     ) as HTMLSelectElement;
-    currencySelector.value = localStorage.getItem("currency") || "USD";
-    currencySelector.addEventListener("change", () => {
-        localStorage.setItem("currency", currencySelector.value);
+
+    currencySelector.addEventListener("change", async () => {
+        document.cookie = `currency=${currencySelector.value}`;
         location.reload();
     });
 </script>

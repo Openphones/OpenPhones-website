@@ -1,0 +1,46 @@
+---
+import { ICartItem, getURL } from "../../scripts/dataIO";
+
+const cart = JSON.parse(Astro.cookies.get("cart").value || "[]") as ICartItem[];
+const url = getURL(Astro.url.hostname);
+
+const redirect = await fetch(`${url}/create-checkout-session`, {
+    headers: {
+        "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+        items: cart,
+        type: "stripe",
+    }),
+}).then((r) => {
+    if (!r.ok) {
+        return null;
+    }
+    return r.json();
+});
+---
+
+<a href={redirect ? redirect.url : "/cancel"} id="checkout" type="submit"
+    >Checkout</a
+>
+
+<style lang="scss">
+    a {
+        cursor: pointer;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--gradient);
+        border: none;
+        color: var(--button-text);
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: all 0.25s;
+        font-size: 1.25rem;
+
+        &:hover {
+            box-shadow: 0 0 1rem 0 var(--item-bg);
+        }
+    }
+</style>

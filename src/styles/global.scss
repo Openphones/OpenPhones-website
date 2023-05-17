@@ -1,18 +1,9 @@
 @use "colors";
 
-// Font
-@font-face {
-    font-family: 'Inter';
-    font-weight: 100 900;
-    font-display: swap;
-    font-style: oblique 0deg 10deg;
-    src: url("/font/Inter.var.woff2") format("woff2");
-}
-
 // Root
 * {
     box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+    font-family: ui-sans-serif, system-ui;
 }
 
 body {
@@ -36,10 +27,6 @@ html {
 
 a {
     text-decoration: none;
-}
-
-svg {
-    fill: var(--text);
 }
 
 // Scrollbar

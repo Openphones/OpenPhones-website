@@ -8,8 +8,17 @@ export interface IProduct {
     images: string[];
     stock: boolean;
     overrides: {
-        color: IProductColor[]
-        storage: IProductStorage[]
+        color: {
+            name: string
+            color: string
+            readable: string
+        }[]
+        storage: {
+            size: number
+            name: string
+            price: number
+            colorcomp: string[]
+        }[]
     }
 }
 
@@ -22,27 +31,13 @@ export interface ICartItem {
     }
 }
 
-export interface IProductColor {
-    name: string
-    color: string
-    readable: string
+export function getURL(origin: string) {
+    return origin.endsWith(".onion") ? "http://nrnd5rs5aut37ny3vst42sj7a3v7xpw2y42k453gf6ibjlro5yjdpvyd.onion" : "https://api.openphones.global"
+}
+export function getProducts(origin: string, currency: string) {
+    return fetch(`${getURL(origin)}/products?currency=${currency}`).then(r => r.json() as Promise<IProduct[]>);
 }
 
-export interface IProductStorage {
-    size: number
-    name: string
-    price: number
-    colorcomp: string[]
+export function currencyConvert(value: number, currency: string) {
+    return new Intl.NumberFormat("en", { style: "currency", currency: currency }).format(value);
 }
-
-const currency = localStorage.getItem("currency") || "USD";
-
-export const url = location.origin.endsWith(".onion") ? "http://nrnd5rs5aut37ny3vst42sj7a3v7xpw2y42k453gf6ibjlro5yjdpvyd.onion" : "https://api.openphones.global";
-
-export const products = fetch(`${url}/products?currency=${currency}`).then(r => r.json() as Promise<IProduct[]>);
-
-export function currencyConvert(value: number) {
-    return new Intl.NumberFormat(navigator.language, { style: "currency", currency: currency }).format(value);
-}
-
-export const cart = JSON.parse(localStorage.getItem("cart")) as ICartItem[] || new Array<ICartItem>();
