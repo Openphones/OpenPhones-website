@@ -11,43 +11,62 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <h2 id="privacy-policy">Privacy Policy</h2>
 
     <p>
-      We collect the minimum amount of personal information necessary to
-      complete transactions. We do not share your information with third parties
-      except for the purposes of processing payments and completing
-      transactions. Our third-party service providers include:
+      This Privacy Policy defines what data OpenPhones.global ("we", "us")
+      collect, how we use it, and your rights under privacy regulation.
     </p>
-    <ul>
-      <li>
-        <a
-          href="https://www.ovh.com/us/support/termsofservice/#personal-data-protection"
-          >OVH for hosting</a
-        >,
-      </li>
-      <li>
-        <a href="https://www.cloudflare.com/privacypolicy/"
-          >Cloudflare for CDN and DDoS protection</a
-        >,
-      </li>
-      <li>
-        <a href="https://stripe.com/privacy">Stripe for payment processing</a>,
-      </li>
-      <li>
-        <a href="https://www.coinbase.com/legal/privacy"
-          >Coinbase for cryptocurrency transactions</a
-        >,
-      </li>
-      <li>
-        <a href="https://ship.pirateship.com/privacy"
-          >Pirateship for shipping in the US</a
-        >, and
-      </li>
-      <li>
-        <a href="https://www.parcelmonkey.com/privacy"
-          >Parcelmonkey for international shipping</a
-        >.
-      </li>
-    </ul>
-    <p>By using our website, you consent to our privacy policy.</p>
+
+    <h3>What data we collect and what it's used for:</h3>
+
+    <p>
+      We do not knowingly collect data on children under the age of 13. For
+      those 13 and above, we collect your name, address, payment information,
+      email address, and phone number via our payment proccesor, Stripe. This
+      information is used for payment proccesing, contacting you, and shipping
+      the order.
+    </p>
+
+    <h3>How your data is stored and retained:</h3>
+
+    <p>
+      Your personal information is retained in Stripe until after the
+      transaction is complete and the return period has expired (2 weeks from
+      the order date). As per GDPR, you can request to update, see or delete the
+      data we have stored on you.
+    </p>
+
+    <h3>What we share with 3rd parties:</h3>
+
+    <p>
+      As for other 3<sup>rd</sup> parties, the only information we share is the name
+      and shipping address provided, in order to fufill the shipment.
+    </p>
+
+    <h3>Business transfers:</h3>
+
+    <p>
+      In case of a business transfer, all information from Stripe will be
+      transferred over to the new owners for the purpose of completing
+      transactions.
+    </p>
+
+    <h3>Future updates to this policy:</h3>
+
+    <p>
+      This policy may be updated over time to accurately reflect how we collect
+      your personal information. We may update this privacy policy at any time
+      without notice.
+    </p>
+
+    <h3>Questions, concerns, and excersing your rights</h3>
+
+    <p>
+      If you have any questions or concerns about this privacy policy, or would
+      like to excersise your privacy rights, you can contact us at
+      <a href="mailto:openphones+legal@proton.me">openphones+legal@proton.me</a
+      >.
+    </p>
+
+    <hr />
 
     <h2 id="terms-of-service">Terms of Service</h2>
     <p>
@@ -77,15 +96,12 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       text-align: center;
     }
 
-    ul {
-      padding-left: 1.5rem;
-      list-style-type: circle;
-      text-align: left;
-      margin: 0;
+    h2 {
+      margin: 0.75rem 0;
+    }
 
-      li {
-        margin: 0.5rem 0;
-      }
+    h3 {
+      margin: 0.5rem 0;
     }
 
     a {
@@ -94,6 +110,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       &:hover {
         text-decoration: underline;
       }
+    }
+
+    p {
+      margin: 0.5rem 0;
     }
   }
 </style>
