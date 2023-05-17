@@ -4,39 +4,38 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="OpenPhones">
-	<main>
-		<div class="header">
-			<h1>Store (Not accepting orders yet!)</h1>
-			<p>
-				Get secure GrapheneOS phones without overpaying or sacrificing
-				privacy.
-			</p>
-		</div>
-		<Store />
-	</main>
+  <main>
+    <div class="header">
+      <h1>Store (Not accepting orders yet!)</h1>
+      <p>
+        Get secure GrapheneOS phones without overpaying or sacrificing privacy.
+      </p>
+    </div>
+    <Store />
+  </main>
 </BaseLayout>
 
 <style lang="scss">
-	main {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		width: 64rem;
-		max-width: 88vw;
-		margin: auto;
-		padding: 1rem 0;
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 64rem;
+    max-width: 88vw;
+    margin: auto;
+    padding: 1rem 0;
 
-		.header {
-			text-align: center;
+    .header {
+      text-align: center;
 
-			h1 {
-				font-size: 3rem;
-			}
+      h1 {
+        font-size: 3rem;
+      }
 
-			p {
-				font-weight: bold;
-				font-size: 1.5rem;
-			}
-		}
-	}
+      p {
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+    }
+  }
 </style>

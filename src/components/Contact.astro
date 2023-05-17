@@ -4,76 +4,76 @@ const { location } = Astro.props;
 ---
 
 <div class={location == "footer" && "footer"}>
-    <h2 id="contact-us">Contact Us</h2>
-    <span>
-        <p>
-            <a href="mailto:openphones+support@proton.me" title="Email"
-                ><SVG name="email" />
-                Email</a
-            >
-        </p>
-        <p>
-            <a
-                href="https://account.wire.com/conversation-join/?key=cHblfEgHHcaTp38gYXPT&code=b19Sj9WVF5OU1aIZ5Vsn&domain=wire.com"
-                title="Wire"
-                ><SVG name="wire" />
-                Wire</a
-            >
-        </p>
-        <p>
-            <a
-                href="https://matrix.to/#/#support:matrix.openphones.global"
-                title="Matrix"
-                ><SVG name="matrix" />
-                Matrix
-            </a>
-        </p>
-    </span>
+  <h2 id="contact-us">Contact Us</h2>
+  <span>
+    <p>
+      <a href="mailto:openphones+support@proton.me" title="Email"
+        ><SVG name="email" />
+        Email</a
+      >
+    </p>
+    <p>
+      <a
+        href="https://account.wire.com/conversation-join/?key=cHblfEgHHcaTp38gYXPT&code=b19Sj9WVF5OU1aIZ5Vsn&domain=wire.com"
+        title="Wire"
+        ><SVG name="wire" />
+        Wire</a
+      >
+    </p>
+    <p>
+      <a
+        href="https://matrix.to/#/#support:matrix.openphones.global"
+        title="Matrix"
+        ><SVG name="matrix" />
+        Matrix
+      </a>
+    </p>
+  </span>
 </div>
 
 <style lang="scss">
-    div {
-        display: flex;
-        flex-direction: column;
+  div {
+    display: flex;
+    flex-direction: column;
 
-        p,
-        a {
-            margin: 0.25rem 0;
-        }
-
-        a {
-            display: inline-flex;
-            align-items: center;
-            color: var(--link);
-
-            &:hover {
-                text-decoration: underline;
-            }
-        }
+    p,
+    a {
+      margin: 0.25rem 0;
     }
 
-    .footer {
-        h2 {
-            font-size: 1rem;
-            margin: 0;
-        }
+    a {
+      display: inline-flex;
+      align-items: center;
+      color: var(--link);
 
-        span {
-            display: flex;
-            flex-direction: row;
-            gap: 0.75rem;
-            align-items: center;
-            align-self: flex-start;
-
-            a {
-                font-size: 0;
-            }
-        }
-
-        @media (max-width: 425px) {
-            margin-top: 1rem;
-            flex-direction: column;
-            align-self: flex-start;
-        }
+      &:hover {
+        text-decoration: underline;
+      }
     }
+  }
+
+  .footer {
+    h2 {
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    span {
+      display: flex;
+      flex-direction: row;
+      gap: 0.75rem;
+      align-items: center;
+      align-self: flex-start;
+
+      a {
+        font-size: 0;
+      }
+    }
+
+    @media (max-width: 425px) {
+      margin-top: 1rem;
+      flex-direction: column;
+      align-self: flex-start;
+    }
+  }
 </style>

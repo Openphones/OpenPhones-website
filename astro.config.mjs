@@ -4,10 +4,10 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://openphones.global",
-    integrations: [sitemap()],
-    output: "server",
-    adapter: node({
-        mode: "standalone"
-    })
+  site: "https://openphones.global",
+  integrations: [sitemap()],
+  output: "server",
+  adapter: node({
+    mode: "standalone",
+  }),
 });

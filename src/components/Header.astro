@@ -8,87 +8,87 @@ const cart = JSON.parse(Astro.cookies.get("cart").value || "[]") as ICartItem[];
 ---
 
 <header>
-    <a href="/">
-        <h2>OpenPhones</h2>
+  <a href="/">
+    <h2>OpenPhones</h2>
+  </a>
+  <nav>
+    <ThemeToggle />
+    <Currency />
+    <a href="/cart" title="Cart">
+      <SVG name="cart" />
+      <p id="cart-badge"></p>
     </a>
-    <nav>
-        <ThemeToggle />
-        <Currency />
-        <a href="/cart" title="Cart">
-            <SVG name="cart" />
-            <p id="cart-badge"></p>
-        </a>
-    </nav>
+  </nav>
 </header>
 
 <style lang="scss">
-    header {
-        position: sticky;
-        top: 0;
-        background: var(--bg);
-        z-index: 2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem;
-        border-bottom: 1px solid var(--variant);
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--variant);
 
-        h2 {
-            margin: 0;
-        }
-
-        a {
-            color: var(--text);
-            position: relative;
-            background-color: var(--bg);
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-
-            &::before {
-                content: "";
-                position: absolute;
-                z-index: -1;
-                transition: all 0.25s;
-                background: var(--gradient);
-                filter: var(--filter);
-                inset: -0.125rem;
-                opacity: 0;
-            }
-
-            &:hover::before {
-                opacity: 1;
-            }
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-        }
-
-        p {
-            position: absolute;
-            top: 51.5%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            margin: 0;
-            font-size: 1rem;
-            background: var(--gradient);
-            color: var(--button-text);
-            border-radius: 0.125rem;
-            width: 1.1875rem;
-            text-align: center;
-        }
+    h2 {
+      margin: 0;
     }
+
+    a {
+      color: var(--text);
+      position: relative;
+      background-color: var(--bg);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+
+      &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        transition: all 0.25s;
+        background: var(--gradient);
+        filter: var(--filter);
+        inset: -0.125rem;
+        opacity: 0;
+      }
+
+      &:hover::before {
+        opacity: 1;
+      }
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    p {
+      position: absolute;
+      top: 51.5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+      font-size: 1rem;
+      background: var(--gradient);
+      color: var(--button-text);
+      border-radius: 0.125rem;
+      width: 1.1875rem;
+      text-align: center;
+    }
+  }
 </style>
 
 <script define:vars={{ cart }}>
-    const cartButton = document.getElementById("cart-badge");
+  const cartButton = document.getElementById("cart-badge");
 
-    let totalQuantity = 0;
-    for (const cartItem of cart) {
-        totalQuantity += cartItem.quantity;
-    }
+  let totalQuantity = 0;
+  for (const cartItem of cart) {
+    totalQuantity += cartItem.quantity;
+  }
 
-    cartButton.innerHTML = totalQuantity.toString();
+  cartButton.innerHTML = totalQuantity.toString();
 </script>

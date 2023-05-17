@@ -2,112 +2,112 @@
 import SVG from "../SVG.astro";
 
 interface Props {
-    id: string;
-    images: string[];
-    shortName: string;
+  id: string;
+  images: string[];
+  shortName: string;
 }
 
 const { id, images, shortName } = Astro.props;
 ---
 
 <div class="carousel" id=`${id}-images`>
-    <div class="images">
-        {images.map((image) => <img src={image} alt={`${shortName}`} />)}
-    </div>
-    <button type="button" class="prev-button" title="Previous image"
-        ><SVG name="prev" /></button
-    >
-    <button type="button" class="next-button" title="Next image"
-        ><SVG name="next" /></button
-    >
+  <div class="images">
+    {images.map((image) => <img src={image} alt={`${shortName}`} />)}
+  </div>
+  <button type="button" class="prev-button" title="Previous image"
+    ><SVG name="prev" /></button
+  >
+  <button type="button" class="next-button" title="Next image"
+    ><SVG name="next" /></button
+  >
 </div>
 
 <style lang="scss">
-    .carousel {
-        position: relative;
-        margin: auto;
+  .carousel {
+    position: relative;
+    margin: auto;
 
-        .images {
-            display: flex;
-            justify-content: center;
-            width: 20rem;
-            height: 24rem;
+    .images {
+      display: flex;
+      justify-content: center;
+      width: 20rem;
+      height: 24rem;
 
-            img {
-                object-fit: cover;
-                display: none;
-                border-radius: 0.75rem;
+      img {
+        object-fit: cover;
+        display: none;
+        border-radius: 0.75rem;
 
-                @media (min-width: 1200px) {
-                    max-width: 24rem;
-                }
-            }
+        @media (min-width: 1200px) {
+          max-width: 24rem;
         }
-
-        button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            border: none;
-            cursor: pointer;
-            background-color: var(--variant);
-            padding: 0.5rem;
-            border-radius: 0.5rem;
-            display: inline-flex;
-
-            &.prev-button {
-                display: none;
-                left: -0.5rem;
-            }
-
-            &.next-button {
-                right: -0.5rem;
-            }
-        }
+      }
     }
+
+    button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      cursor: pointer;
+      background-color: var(--variant);
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      display: inline-flex;
+
+      &.prev-button {
+        display: none;
+        left: -0.5rem;
+      }
+
+      &.next-button {
+        right: -0.5rem;
+      }
+    }
+  }
 </style>
 
 <script define:vars={{ id, images }}>
-    const carouselContainer = document.getElementById(`${id}-images`);
-    const prevButton = carouselContainer.querySelector(".prev-button");
-    const nextButton = carouselContainer.querySelector(".next-button");
-    const imagesContainer = carouselContainer.querySelector(".images");
+  const carouselContainer = document.getElementById(`${id}-images`);
+  const prevButton = carouselContainer.querySelector(".prev-button");
+  const nextButton = carouselContainer.querySelector(".next-button");
+  const imagesContainer = carouselContainer.querySelector(".images");
 
-    let currentImage = 0;
-    imagesContainer.children[currentImage].style.display = "block";
+  let currentImage = 0;
+  imagesContainer.children[currentImage].style.display = "block";
 
-    prevButton.addEventListener("click", () => {
-        if (currentImage > 0) {
-            imagesContainer.children[currentImage].style.display = "none";
-            currentImage--;
-            imagesContainer.children[currentImage].style.display = "block";
-        }
-
-        if (currentImage === 0) {
-            prevButton.style.display = "none";
-        } else {
-            prevButton.style.display = "block";
-            nextButton.style.display = "block";
-        }
-    });
-
-    nextButton.addEventListener("click", () => {
-        if (currentImage < images.length - 1) {
-            imagesContainer.children[currentImage].style.display = "none";
-            currentImage++;
-            imagesContainer.children[currentImage].style.display = "block";
-        }
-
-        if (currentImage === images.length - 1) {
-            nextButton.style.display = "none";
-        } else {
-            nextButton.style.display = "block";
-            prevButton.style.display = "block";
-        }
-    });
-
-    if (images.length <= 1) {
-        nextButton.style.display = "none";
-        prevButton.style.display = "none";
+  prevButton.addEventListener("click", () => {
+    if (currentImage > 0) {
+      imagesContainer.children[currentImage].style.display = "none";
+      currentImage--;
+      imagesContainer.children[currentImage].style.display = "block";
     }
+
+    if (currentImage === 0) {
+      prevButton.style.display = "none";
+    } else {
+      prevButton.style.display = "block";
+      nextButton.style.display = "block";
+    }
+  });
+
+  nextButton.addEventListener("click", () => {
+    if (currentImage < images.length - 1) {
+      imagesContainer.children[currentImage].style.display = "none";
+      currentImage++;
+      imagesContainer.children[currentImage].style.display = "block";
+    }
+
+    if (currentImage === images.length - 1) {
+      nextButton.style.display = "none";
+    } else {
+      nextButton.style.display = "block";
+      prevButton.style.display = "block";
+    }
+  });
+
+  if (images.length <= 1) {
+    nextButton.style.display = "none";
+    prevButton.style.display = "none";
+  }
 </script>

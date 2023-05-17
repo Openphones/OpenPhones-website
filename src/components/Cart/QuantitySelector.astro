@@ -2,11 +2,11 @@
 import { ICartItem, getProducts } from "../../scripts/dataIO";
 
 interface Props {
-    id: string;
-    storage: number;
-    color: string;
-    quantity: number;
-    price: number;
+  id: string;
+  storage: number;
+  color: string;
+  quantity: number;
+  price: number;
 }
 
 const { id, storage, color, quantity, price } = Astro.props;
@@ -17,70 +17,68 @@ const products = await getProducts(Astro.url.hostname, currency);
 ---
 
 <input
-    type="number"
-    id={`quantity-${id}-${storage}-${color}`}
-    value={quantity}
-    min="1"
-    title="Quantity"
+  type="number"
+  id={`quantity-${id}-${storage}-${color}`}
+  value={quantity}
+  min="1"
+  title="Quantity"
 />
 
 <style lang="scss">
-    input {
-        border: 1px solid var(--variant);
-        border-radius: 0.5rem;
-        background-color: var(--bg);
-        padding: 0.5rem 0;
-        color: var(--text);
-        width: 3rem;
-        text-align: center;
-    }
+  input {
+    border: 1px solid var(--variant);
+    border-radius: 0.5rem;
+    background-color: var(--bg);
+    padding: 0.5rem 0;
+    color: var(--text);
+    width: 3rem;
+    text-align: center;
+  }
 </style>
 
 <script define:vars={{ cart, color, storage, id, price, products, currency }}>
-    function calculateSubtotal() {
-        let subtotal = 0;
-        const matchedItems = cart
-            .map((cartItem) =>
-                products.find((product) => product.id === cartItem.id)
-            )
-            .filter((item) => item !== undefined);
+  function calculateSubtotal() {
+    let subtotal = 0;
+    const matchedItems = cart
+      .map((cartItem) => products.find((product) => product.id === cartItem.id))
+      .filter((item) => item !== undefined);
 
-        for (const index in cart) {
-            subtotal += cart[index].quantity * matchedItems[index].price;
-        }
-
-        return subtotal;
+    for (const index in cart) {
+      subtotal += cart[index].quantity * matchedItems[index].price;
     }
 
-    function currencyConvert(value) {
-        return new Intl.NumberFormat("en", {
-            style: "currency",
-            currency: currency,
-        }).format(value);
-    }
+    return subtotal;
+  }
 
-    const quantitySelector = document.getElementById(
-        `quantity-${id}-${storage}-${color}`
+  function currencyConvert(value) {
+    return new Intl.NumberFormat("en", {
+      style: "currency",
+      currency: currency,
+    }).format(value);
+  }
+
+  const quantitySelector = document.getElementById(
+    `quantity-${id}-${storage}-${color}`
+  );
+
+  quantitySelector.addEventListener("change", (e) => {
+    const cartIndex = cart.findIndex(
+      (cartItem) =>
+        cartItem.id === id &&
+        cartItem.overrides.color === color &&
+        cartItem.overrides.size === storage
     );
 
-    quantitySelector.addEventListener("change", (e) => {
-        const cartIndex = cart.findIndex(
-            (cartItem) =>
-                cartItem.id === id &&
-                cartItem.overrides.color === color &&
-                cartItem.overrides.size === storage
-        );
+    if (e.target.valueAsNumber > 0) {
+      cart[cartIndex].quantity = e.target.valueAsNumber;
+      document.cookie = `cart=${JSON.stringify(cart)}`;
+    } else {
+      cart.splice(cartIndex, 1);
 
-        if (e.target.valueAsNumber > 0) {
-            cart[cartIndex].quantity = e.target.valueAsNumber;
-            document.cookie = `cart=${JSON.stringify(cart)}`;
-        } else {
-            cart.splice(cartIndex, 1);
+      document.getElementById(`${id}-${storage}-${color}`).remove();
+      document.cookie = `cart=${JSON.stringify(cart)}`;
+    }
 
-            document.getElementById(`${id}-${storage}-${color}`).remove();
-            document.cookie = `cart=${JSON.stringify(cart)}`;
-        }
-
-        location.reload();
-    });
+    location.reload();
+  });
 </script>

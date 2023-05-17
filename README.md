@@ -1,7 +1,9 @@
 # OpenPhones
+
 This is the source code for the [OpenPhones website](https://openphones.global).
 
 ## Build instructions
+
 1.  ```bash
     git clone https://github.com/Openphones/OpenPhones-website && cd OpenPhones-website
     ```
@@ -16,6 +18,7 @@ This is the source code for the [OpenPhones website](https://openphones.global).
     This builds the site and places the files in the `dist/` directory.
 
 ## Licenses
+
 The licenses of all npm dependencies are in their respective folders in `node_modules/` when you install them with `npm install`.
 
 [Astro](https://astro.build/), the static site generator used to generate this website, is licensed under the [MIT license](https://github.com/withastro/astro/blob/main/LICENSE).

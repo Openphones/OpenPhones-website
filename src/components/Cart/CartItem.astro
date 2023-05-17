@@ -5,19 +5,19 @@ import RemoveItem from "./RemoveItem.astro";
 import QuantitySelector from "./QuantitySelector.astro";
 
 interface Props {
-    item: IProduct;
-    color: {
-        name: string;
-        color: string;
-        readable: string;
-    };
-    storage: {
-        size: number;
-        name: string;
-        price: number;
-        colorcomp: string[];
-    };
-    quantity: number;
+  item: IProduct;
+  color: {
+    name: string;
+    color: string;
+    readable: string;
+  };
+  storage: {
+    size: number;
+    name: string;
+    price: number;
+    colorcomp: string[];
+  };
+  quantity: number;
 }
 
 const { item, color, storage, quantity } = Astro.props;
@@ -25,98 +25,98 @@ const currency = Astro.cookies.get("currency").value || "USD";
 ---
 
 <div id={`${item.id}-${storage.size}-${color.name}`} class="cart-item">
-    {
-        item.images[0] !== "none" && (
-            <img src={item.images[0]} alt={item.long_name} />
-        )
-    }
+  {
+    item.images[0] !== "none" && (
+      <img src={item.images[0]} alt={item.long_name} />
+    )
+  }
 
-    <div class="details">
-        <h2>{item.long_name}</h2>
-        <div class="customisation">
-            <p>
-                <span class="bold">Storage:</span>{" "}
-                {storage.name}
-            </p>
-            <p>
-                <span class="bold">Color:</span>{" "}
-                {color.readable}
-            </p>
-        </div>
-        <p set:html={writeDescription(item.description)} />
-        <div class="price">
-            <span class="bold">
-                {
-                    !item.stock ? (
-                        <QuantitySelector
-                            id={item.id}
-                            storage={storage.size}
-                            color={color.name}
-                            quantity={quantity}
-                            price={item.price}
-                        />
-                    ) : (
-                        "1"
-                    )
-                }
-                ×
-                {currencyConvert(item.price, currency)}
-            </span>
-        </div>
-        <RemoveItem id={item.id} color={color.name} storage={storage.size} />
+  <div class="details">
+    <h2>{item.long_name}</h2>
+    <div class="customisation">
+      <p>
+        <span class="bold">Storage:</span>{" "}
+        {storage.name}
+      </p>
+      <p>
+        <span class="bold">Color:</span>{" "}
+        {color.readable}
+      </p>
     </div>
+    <p set:html={writeDescription(item.description)} />
+    <div class="price">
+      <span class="bold">
+        {
+          !item.stock ? (
+            <QuantitySelector
+              id={item.id}
+              storage={storage.size}
+              color={color.name}
+              quantity={quantity}
+              price={item.price}
+            />
+          ) : (
+            "1"
+          )
+        }
+        ×
+        {currencyConvert(item.price, currency)}
+      </span>
+    </div>
+    <RemoveItem id={item.id} color={color.name} storage={storage.size} />
+  </div>
 </div>
 
 <style lang="scss">
-    .cart-item {
-        display: flex;
-        gap: 1rem;
-        padding: 1.5rem;
-        margin: 1rem 0;
-        border-radius: 0.75rem;
-        background-color: var(--item-bg);
+  .cart-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-radius: 0.75rem;
+    background-color: var(--item-bg);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    img {
+      max-width: 12rem;
+      max-height: 16rem;
+      border-radius: 0.5rem;
+      object-fit: cover;
+      align-self: center;
+    }
+
+    .details {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: justify;
+
+      h2 {
+        margin-top: 0;
+      }
+
+      .price {
+        position: absolute;
+        align-self: flex-end;
 
         @media (max-width: 768px) {
-            flex-direction: column;
+          position: static;
+          align-self: initial;
         }
+      }
 
-        img {
-            max-width: 12rem;
-            max-height: 16rem;
-            border-radius: 0.5rem;
-            object-fit: cover;
-            align-self: center;
+      p {
+        flex-grow: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @media (max-width: 768px) {
+          white-space: nowrap;
         }
-
-        .details {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            text-align: justify;
-
-            h2 {
-                margin-top: 0;
-            }
-
-            .price {
-                position: absolute;
-                align-self: flex-end;
-
-                @media (max-width: 768px) {
-                    position: static;
-                    align-self: initial;
-                }
-            }
-
-            p {
-                flex-grow: 1;
-                overflow: hidden;
-                text-overflow: ellipsis;
-
-                @media (max-width: 768px) {
-                    white-space: nowrap;
-                }
-            }
-        }
+      }
     }
+  }
 </style>

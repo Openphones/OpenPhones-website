@@ -1,77 +1,77 @@
 @mixin light-theme {
-    --bg: #fff;
-    --text: #111;
-    --link: #05b;
-    --variant: #ddd;
-    --item-bg: #eee;
-    --gradient: linear-gradient(to bottom right, #f00, #00f);
-    --filter: blur(10px) opacity(75%);
-    --button-text: #eee;
+  --bg: #fff;
+  --text: #111;
+  --link: #05b;
+  --variant: #ddd;
+  --item-bg: #eee;
+  --gradient: linear-gradient(to bottom right, #f00, #00f);
+  --filter: blur(10px) opacity(75%);
+  --button-text: #eee;
 }
 
 @mixin dark-theme {
-    --bg: #111;
-    --text: #eee;
-    --link: #acf;
-    --variant: #222;
-    --item-bg: #222;
-    --gradient: linear-gradient(to bottom right, #f00, #00f);
-    --filter: blur(10px) opacity(75%);
-    --button-text: #eee;
+  --bg: #111;
+  --text: #eee;
+  --link: #acf;
+  --variant: #222;
+  --item-bg: #222;
+  --gradient: linear-gradient(to bottom right, #f00, #00f);
+  --filter: blur(10px) opacity(75%);
+  --button-text: #eee;
 }
 
 body {
-    @media (prefers-color-scheme: light) {
-        @include light-theme;
+  @media (prefers-color-scheme: light) {
+    @include light-theme;
 
-        .sun {
-            display: none;
-        }
+    .sun {
+      display: none;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    @include dark-theme;
+
+    .moon {
+      display: none;
     }
 
-    @media (prefers-color-scheme: dark) {
-        @include dark-theme;
+    .sun {
+      display: inline-block;
+    }
+  }
 
-        .moon {
-            display: none;
-        }
+  &.light {
+    @include light-theme;
 
-        .sun {
-            display: inline-block;
-        }
+    .moon {
+      display: inline-block;
     }
 
-    &.light {
-        @include light-theme;
+    .sun {
+      display: none;
+    }
+  }
 
-        .moon {
-            display: inline-block;
-        }
+  &.dark {
+    @include dark-theme;
 
-        .sun {
-            display: none;
-        }
+    .moon {
+      display: none;
     }
 
-    &.dark {
-        @include dark-theme;
-
-        .moon {
-            display: none;
-        }
-
-        .sun {
-            display: inline-block;
-        }
+    .sun {
+      display: inline-block;
     }
+  }
 }
 
 ::selection {
-    background-color: var(--link);
-    color: var(--bg);
+  background-color: var(--link);
+  color: var(--bg);
 }
 
 ::-moz-selection {
-    background-color: var(--link);
-    color: var(--bg);
+  background-color: var(--link);
+  color: var(--bg);
 }

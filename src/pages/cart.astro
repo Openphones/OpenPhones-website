@@ -2,10 +2,10 @@
 import CartItem from "../components/Cart/CartItem.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import {
-	ICartItem,
-	getProducts,
-	IProduct,
-	currencyConvert,
+  ICartItem,
+  getProducts,
+  IProduct,
+  currencyConvert,
 } from "../scripts/dataIO";
 import { calculateSubtotal } from "../scripts/calculateSubtotal";
 import Checkout from "../components/Cart/Checkout.astro";
@@ -16,57 +16,55 @@ const currency = Astro.cookies.get("currency").value || "USD";
 const products = await getProducts(Astro.url.hostname, currency);
 
 const matchedItems = cart
-	.map((cartItem) => products.find((product) => product.id === cartItem.id))
-	.filter((item) => item !== undefined);
+  .map((cartItem) => products.find((product) => product.id === cartItem.id))
+  .filter((item) => item !== undefined);
 
 const total = calculateSubtotal(cart, products);
 ---
 
 <BaseLayout title="Cart | OpenPhones">
-	<main>
-		{
-			cart.length === 0 ? (
-				<h1 class="empty-cart-text">Add some items to cart!</h1>
-			) : (
-				<>
-					<div class="header">
-						<h1>Cart</h1>
-						<h2 id="subtotal">
-							{currencyConvert(total, currency)}
-						</h2>
-						<Checkout />
-					</div>
-					<div id="cart">
-						{matchedItems.map((item, index) => (
-							<CartItem
-								item={item}
-								color={findColor(item, index, cart)}
-								storage={findStorage(item, index, cart)}
-								quantity={getQuantity(item, index, cart)}
-							/>
-						))}
-					</div>
-				</>
-			)
-		}
-	</main>
+  <main>
+    {
+      cart.length === 0 ? (
+        <h1 class="empty-cart-text">Add some items to cart!</h1>
+      ) : (
+        <>
+          <div class="header">
+            <h1>Cart</h1>
+            <h2 id="subtotal">{currencyConvert(total, currency)}</h2>
+            <Checkout />
+          </div>
+          <div id="cart">
+            {matchedItems.map((item, index) => (
+              <CartItem
+                item={item}
+                color={findColor(item, index, cart)}
+                storage={findStorage(item, index, cart)}
+                quantity={getQuantity(item, index, cart)}
+              />
+            ))}
+          </div>
+        </>
+      )
+    }
+  </main>
 </BaseLayout>
 
 <style lang="scss">
-	main {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		text-align: center;
-		width: 64rem;
-		max-width: 88vw;
-		margin: auto;
-	}
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 64rem;
+    max-width: 88vw;
+    margin: auto;
+  }
 
-	#cart {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-		text-align: initial;
-	}
+  #cart {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: initial;
+  }
 </style>

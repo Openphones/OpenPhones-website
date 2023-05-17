@@ -1,102 +1,101 @@
 ---
 interface Props {
-    shortName: string;
-    overrides: {
-        color: {
-            name: string;
-            color: string;
-            readable: string;
-        }[];
-        storage: {
-            size: number;
-            name: string;
-            price: number;
-            colorcomp: string[];
-        }[];
-    };
-    id: string;
+  shortName: string;
+  overrides: {
+    color: {
+      name: string;
+      color: string;
+      readable: string;
+    }[];
+    storage: {
+      size: number;
+      name: string;
+      price: number;
+      colorcomp: string[];
+    }[];
+  };
+  id: string;
 }
 
 const { shortName, overrides, id } = Astro.props;
 ---
 
 <div>
-    <select name=`Storage selection for ${shortName}` id=`storage-select-${id}`>
-        <option value="">Select a storage option</option>
-        {
-            overrides.storage.map((storage) => (
-                <option value={storage.size}>{storage.name}</option>
-            ))
-        }
-    </select>
-    <select
-        name=`Color selection for ${shortName}`
-        id=`color-select-${id}`
-        class="color-select"></select>
+  <select name=`Storage selection for ${shortName}` id=`storage-select-${id}`>
+    <option value="">Select a storage option</option>
+    {
+      overrides.storage.map((storage) => (
+        <option value={storage.size}>{storage.name}</option>
+      ))
+    }
+  </select>
+  <select
+    name=`Color selection for ${shortName}`
+    id=`color-select-${id}`
+    class="color-select"></select>
 </div>
 
 <style lang="scss">
-    div {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-        font-size: 1.5rem;
+  div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 1.5rem;
 
-        select {
-            background-color: var(--bg);
-            color: var(--text);
-            border: 1px solid var(--variant);
-            font-size: 1rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 0.5rem;
+    select {
+      background-color: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--variant);
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
 
-            &:focus-visible {
-                outline: none;
-            }
+      &:focus-visible {
+        outline: none;
+      }
 
-            &.color-select {
-                display: none;
-            }
-        }
+      &.color-select {
+        display: none;
+      }
     }
+  }
 </style>
 
 <script define:vars={{ id, overrides }}>
-    const storageSelect = document.getElementById(`storage-select-${id}`);
-    const colorSelect = document.getElementById(`color-select-${id}`);
+  const storageSelect = document.getElementById(`storage-select-${id}`);
+  const colorSelect = document.getElementById(`color-select-${id}`);
 
-    storageSelect.addEventListener("change", () => {
-        if (storageSelect.firstElementChild.value === "") {
-            storageSelect.firstElementChild.remove();
-        }
-        colorSelect.style.display = "inline-block";
-        const selectedStorageOption = overrides.storage.find(
-            (storageOption) =>
-                storageOption.size.toString() === storageSelect.value
+  storageSelect.addEventListener("change", () => {
+    if (storageSelect.firstElementChild.value === "") {
+      storageSelect.firstElementChild.remove();
+    }
+    colorSelect.style.display = "inline-block";
+    const selectedStorageOption = overrides.storage.find(
+      (storageOption) => storageOption.size.toString() === storageSelect.value
+    );
+    colorSelect.innerHTML = "";
+
+    if (selectedStorageOption.colorcomp) {
+      for (const color of selectedStorageOption.colorcomp) {
+        const compatibleColor = overrides.color.find(
+          (colorOption) => colorOption.name === color
         );
-        colorSelect.innerHTML = "";
 
-        if (selectedStorageOption.colorcomp) {
-            for (const color of selectedStorageOption.colorcomp) {
-                const compatibleColor = overrides.color.find(
-                    (colorOption) => colorOption.name === color
-                );
+        const colorOptionElement = document.createElement("option");
+        colorOptionElement.value = compatibleColor.name;
+        colorOptionElement.innerHTML = compatibleColor.readable;
 
-                const colorOptionElement = document.createElement("option");
-                colorOptionElement.value = compatibleColor.name;
-                colorOptionElement.innerHTML = compatibleColor.readable;
+        colorSelect.append(colorOptionElement);
+      }
+    } else {
+      for (const color of overrides.color) {
+        const colorOptionElement = document.createElement("option");
+        colorOptionElement.value = color.name;
+        colorOptionElement.innerHTML = color.readable;
 
-                colorSelect.append(colorOptionElement);
-            }
-        } else {
-            for (const color of overrides.color) {
-                const colorOptionElement = document.createElement("option");
-                colorOptionElement.value = color.name;
-                colorOptionElement.innerHTML = color.readable;
-
-                colorSelect.append(colorOptionElement);
-            }
-        }
-    });
+        colorSelect.append(colorOptionElement);
+      }
+    }
+  });
 </script>
