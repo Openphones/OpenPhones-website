@@ -6,72 +6,83 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 <BaseLayout title="About Us | OpenPhones">
   <main>
     <h1>About Us</h1>
-    <!-- <p>
-            Welcome to OpenPhones, your destination for an effortless,
-            low-cost, and private way to obtain a GrapheneOS phone and support
-            the project. Our mission is to offer you an alternative to the
-            overpriced and insecure options currently available on the market.
-        </p>
-
-        <p>
-            We pride ourselves on being different from other providers. Unlike
-            Nitrophone, we don't charge double MSRP for a phone that has useless
-            hardware removals. And unlike some others, we won't sell you a phone
-            that doesn't receive full security updates and runs on an insecure
-            operating system that lacks important privacy features.
-        </p>
-
-        <p>
-            We are committed to transparency and privacy, and we offer a hidden
-            service and a private way to pay via Monero for those who require
-            anonymity.
-        </p>
-
-        <p>
-            Our team consists of dedicated individuals who are passionate about
-            privacy and security. Our front-end developer, Noclaps, is a
-            19-year-old from India who uses a Graphene OS phone, likes drawing,
-            and can sing Hamilton songs pretty well. Our back-end developer,
-            Mester, is a 15-year-old from Hungary who used to be a god-tier
-            Minecraft player and is now an expert in various coding languages.
-            He keeps our localhost focused and is essentially the co-CEO of
-            OpenPhones.
-        </p>
-
-        <p>
-            Finally, there's localhost, our founder and CEO. He's a 17-year-old
-            from the US who uses a Graphene OS phone and is an aspiring CCNA. He
-            enjoys mountain biking and debunking Rob Braxman.
-        </p>
-
-        <p>
-            At OpenPhones.global, we are committed to supporting the Graphene OS
-            project by donating 20% of our profits back to the organization. We
-            provide clear breakdowns of our pricing, our front-end and back-end
-            processes, and the use cases and limitations of our site.
-        </p>
-
-        <p>
-            Thank you for choosing OpenPhones.global as your source for a
-            low-cost, private, and transparent Graphene OS phone.
-        </p> -->
     <p>
-      Here at OpenPhones, we believe that privacy and security are basic human
-      rights. Everyone deserves a way to escape the monetization of personal
-      data done by the surveillance capitalist megacorporations of today's
-      world. This is why we started OpenPhones, with a goal to provide an
-      affordable, transparent, and privacy way to obtain GrapheneOS phones to as
-      many people as possible.
+      OpenPhones is a small project made for the purpose of getting more people
+      truly private and secure phones. To accomplish this, we only sell phones
+      that still receive full security updates, with an operating system (OS)
+      that provides meaningful privacy and security benefits, sold at a minimal
+      markup, in addition to providing international shipping options. We also
+      offer a hidden service and an option to pay with Monero, as to offer
+      anonymity for those who require it.
     </p>
+
+    <h2>History</h2>
+
     <p>
-      GrapheneOS is a private and secure operating system based on Android. It
-      is developed as a non-profit open source project. You can find out more
-      about GrapheneOS on their website: <a href="https://grapheneos.org"
-        >https://grapheneos.org</a
-      >. We donate 20% of our profit to the GrapheneOS project, to support their
-      development.
+      Localhost had the idea for OpenPhones in early March, after being inspired
+      by how absolutely horrendous the de-Googled phone market is. The majority
+      of retailers are selling phones at nearly double the market value, on
+      end-of-life (EOL) devices, with OSs that are neither private nor secure.
+      And according to the GrapheneOS team, out of all of the retailers that do
+      ship phones with GrapheneOS, only 1 donates back to the project. With this
+      in mind, he wanted to make a project that did the exact opposite. He
+      decided to only sell phones that receive full security updates, that ship
+      with a truly private and secure OS, at a mininal markup, all while
+      donating back to the project that truly protects users privacy and
+      security.
     </p>
-    <h2>Who we are</h2>
+
+    <p>
+      Work on OpenPhones began in late March of 2023, with Localhost drawing his
+      vision for the website on a borrowed piece of paper from a hotel lobby,
+      about to leave for a cruise. He had discussed his plans earlier with his
+      friend Mester, and he had offered to help build the site. Around that
+      time, a fellow by the name of noClaps had also offered to work on the
+      site. After a careful 2 seconds of consideration, Localhost sent him a
+      picture of that piece of paper, and Mester and noClaps started work on the
+      site.
+    </p>
+
+    <p>
+      Now the site is live, and almost ready for our first sale. In the future,
+      we're hoping to keep 3-4 phones of each model in stock so we can cut down
+      on shipping time. We're also hoping to add trade-ins and repair options to
+      make it even easier to obtain a GrapheneOS phone and make it last. Our end
+      goal by implementing all of this to help more people in and out of the
+      privacy circle easily obtain a GrapheneOS phone, so that they can take the
+      next step in their privacy journey. Thank you for supporting OpenPhones
+      and helping us achieve that!
+    </p>
+
+    <h2>Our Team</h2>
+
+    <h3>Localhost</h3>
+
+    <p>
+      Hello I'm Localhost, the founder of OpenPhones. I'm just your average
+      privacy nerd with a passion for debunking FUD and recommending gaming
+      mice. I know about 2 lines of Python, and ran my own lawn mowing business
+      for 3 years which makes me completetly qualified to run OpenPhones.
+    </p>
+
+    <h3>noClaps</h3>
+
+    <p>
+      Hi, I'm noClaps! I'm the most interesting boring person you've ever met. I
+      make the website for OpenPhones. Yes, the website you're currently on. I
+      also have other projects, that you can check out on my personal site:
+      <a href="https://zerolimits.dev">ZeroLimits.dev</a>. Other than web
+      development, I also enjoy drawing and sketching, photography, researching
+      and writing my blog, travelling, and occasional programming. It's a
+      pleasure to make your acquaintance.
+    </p>
+
+    <h3>Mester</h3>
+
+    <p>
+      Yo, I’m I. Saint Lord Mester Hungarian-Roman King-Emperor Pope, and I do
+      the magic behind the curtains.
+    </p>
 
     <Contact location="about" />
   </main>
@@ -92,6 +103,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       text-align: center;
     }
 
+    h2 {
+      margin: 0.75rem 0;
+    }
+
+    h3 {
+      margin: 0.5rem 0;
+    }
+
     ul {
       list-style-type: none;
       padding-left: 0;
@@ -109,6 +128,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       &:hover {
         text-decoration: underline;
       }
+    }
+
+    p {
+      margin: 0.5rem 0;
     }
   }
 </style>
