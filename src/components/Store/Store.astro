@@ -72,7 +72,7 @@ const products = await getProducts(Astro.url.hostname, currency);
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
     grid-gap: 1rem;
 
-    @media (max-width: 455px) {
+    @media (width <= 455px) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }

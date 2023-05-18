@@ -169,7 +169,7 @@ const currency = Astro.cookies.get("currency").value || "USD";
     "currency"
   ) as HTMLSelectElement;
 
-  currencySelector.addEventListener("change", async () => {
+  currencySelector.addEventListener("change", () => {
     document.cookie = `currency=${currencySelector.value}`;
     location.reload();
   });

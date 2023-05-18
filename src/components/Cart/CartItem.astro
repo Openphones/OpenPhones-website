@@ -76,7 +76,7 @@ const currency = Astro.cookies.get("currency").value || "USD";
     border-radius: 0.75rem;
     background-color: var(--item-bg);
 
-    @media (max-width: 768px) {
+    @media (width <= 768px) {
       flex-direction: column;
     }
 
@@ -102,7 +102,7 @@ const currency = Astro.cookies.get("currency").value || "USD";
         position: absolute;
         align-self: flex-end;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           position: static;
           align-self: initial;
         }
@@ -113,7 +113,7 @@ const currency = Astro.cookies.get("currency").value || "USD";
         overflow: hidden;
         text-overflow: ellipsis;
 
-        @media (max-width: 768px) {
+        @media (width <= 768px) {
           white-space: nowrap;
         }
       }

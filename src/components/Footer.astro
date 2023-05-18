@@ -44,7 +44,7 @@ import Contact from "./Contact.astro";
       max-width: 88vw;
       margin: auto;
 
-      @media (max-width: 425px) {
+      @media (width <= 425px) {
         margin: auto;
         flex-direction: column;
       }
@@ -55,6 +55,19 @@ import Contact from "./Contact.astro";
         display: flex;
         flex-direction: column;
 
+        a {
+          color: var(--text);
+          margin: 0.25rem 0;
+          display: inline-flex;
+          align-items: center;
+          text-decoration: none;
+          background-image: linear-gradient(currentcolor, currentcolor);
+          background-position: 0 100%;
+          background-repeat: no-repeat;
+          background-size: 0% 2px;
+          transition: background-size 0.3s;
+        }
+
         p {
           margin: 0.25rem 0;
 
@@ -63,24 +76,11 @@ import Contact from "./Contact.astro";
           }
         }
 
-        a {
-          color: var(--text);
-          margin: 0.25rem 0;
-          display: inline-flex;
-          align-items: center;
-          text-decoration: none;
-          background-image: linear-gradient(currentColor, currentColor);
-          background-position: 0 100%;
-          background-repeat: no-repeat;
-          background-size: 0% 2px;
-          transition: background-size 0.3s;
-
-          &:hover {
+        a:hover {
             background-size: 100% 2px;
-          }
         }
 
-        @media (max-width: 425px) {
+        @media (width <= 425px) {
           width: 100%;
         }
       }

@@ -13,7 +13,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  min-height: -webkit-fill-available;
+  min-height: stretch;
   min-height: 100vh;
 
   @supports (scroll-behavior: smooth) {
@@ -22,7 +22,7 @@ body {
 }
 
 html {
-  height: -webkit-fill-available;
+  height: stretch;
 }
 
 a {
