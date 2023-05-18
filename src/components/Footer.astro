@@ -66,6 +66,10 @@ import Contact from "./Contact.astro";
           background-repeat: no-repeat;
           background-size: 0% 2px;
           transition: background-size 0.3s;
+
+          &:hover {
+            background-size: 100% 2px;
+          }
         }
 
         p {
@@ -74,10 +78,6 @@ import Contact from "./Contact.astro";
           a {
             margin: 0;
           }
-        }
-
-        a:hover {
-            background-size: 100% 2px;
         }
 
         @media (width <= 425px) {

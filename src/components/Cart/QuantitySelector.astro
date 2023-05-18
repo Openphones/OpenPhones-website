@@ -37,26 +37,6 @@ const products = await getProducts(Astro.url.hostname, currency);
 </style>
 
 <script define:vars={{ cart, color, storage, id, price, products, currency }}>
-  function calculateSubtotal() {
-    let subtotal = 0;
-    const matchedItems = cart
-      .map((cartItem) => products.find((product) => product.id === cartItem.id))
-      .filter((item) => item !== undefined);
-
-    for (const index in cart) {
-      subtotal += cart[index].quantity * matchedItems[index].price;
-    }
-
-    return subtotal;
-  }
-
-  function currencyConvert(value) {
-    return new Intl.NumberFormat("en", {
-      style: "currency",
-      currency: currency,
-    }).format(value);
-  }
-
   const quantitySelector = document.getElementById(
     `quantity-${id}-${storage}-${color}`
   );

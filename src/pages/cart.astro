@@ -1,12 +1,7 @@
 ---
 import CartItem from "../components/Cart/CartItem.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import {
-  ICartItem,
-  getProducts,
-  IProduct,
-  currencyConvert,
-} from "../scripts/dataIO";
+import { ICartItem, getProducts, currencyConvert } from "../scripts/dataIO";
 import { calculateSubtotal } from "../scripts/calculateSubtotal";
 import Checkout from "../components/Cart/Checkout.astro";
 import { findColor, findStorage, getQuantity } from "../scripts/productProps";
