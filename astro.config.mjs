@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [sitemap()],
   output: "server",
   adapter: node({
-    mode: "standalone",
+    mode: "standalone"
   }),
   compressHTML: true
 });
