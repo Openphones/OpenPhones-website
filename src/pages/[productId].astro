@@ -1,9 +1,10 @@
 ---
+import Price from "../components/Price.astro";
 import AddToCart from "../components/Store/AddToCart.astro";
 import Carousel from "../components/Store/Carousel.astro";
 import Overrides from "../components/Store/Overrides.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getProducts, currencyConvert } from "../scripts/dataIO";
+import { getProducts } from "../scripts/dataIO";
 import { writeDescription } from "../scripts/writeDescription";
 
 const currency = Astro.cookies.get("currency").value || "USD";
@@ -15,16 +16,8 @@ if (!product) {
   return Astro.redirect("/404");
 }
 
-const {
-  id,
-  long_name,
-  price,
-  description,
-  short_name,
-  images,
-  overrides,
-  stock,
-} = product;
+const { id, long_name, description, short_name, images, overrides, stock } =
+  product;
 ---
 
 <BaseLayout title={`${long_name} | OpenPhones`}>
@@ -39,9 +32,7 @@ const {
       <p set:html={writeDescription(description)} />
     </div>
     <div class="customisation">
-      <span id=`price-${id}` class="bold"
-        >{currencyConvert(price, currency)}</span
-      >
+      <Price id={id} />
       <Overrides id={id} overrides={overrides} shortName={short_name} />
       <div class="purchase">
         {

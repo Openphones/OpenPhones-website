@@ -1,0 +1,48 @@
+---
+interface Props {
+    total: number;
+}
+
+const { total } = Astro.props;
+---
+
+<h2 id="total" data-total={total}></h2>
+
+<script>
+    // Importing currencyConvert function from "../../scripts/dataIO"
+    import { currencyConvert } from "../../scripts/dataIO";
+
+    // Getting reference to the currency select element
+    const currencySelect = document.getElementById(
+        "currency-select"
+    ) as HTMLSelectElement;
+
+    // Getting reference to the total element
+    const totalElement = document.getElementById("total");
+
+    // Object to handle total amount and currency updates
+    const total = {
+        currency: null,
+
+        // Method to update total element with converted currency
+        update(el) {
+            const total = el.dataset.total;
+            el.innerHTML = currencyConvert(total, this.currency);
+        },
+    };
+
+    // Set currency based on the value from localStorage or the currency select element
+    total.currency = localStorage.getItem("currency") ?? currencySelect.value;
+
+    // Update the total element with converted currency
+    total.update(totalElement);
+
+    // Event listener for currency select change
+    currencySelect.addEventListener("change", () => {
+        // Update the currency value
+        total.currency = currencySelect.value;
+
+        // Update the total element with converted currency
+        total.update(totalElement);
+    });
+</script>

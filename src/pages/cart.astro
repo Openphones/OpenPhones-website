@@ -5,6 +5,7 @@ import { ICartItem, getProducts, currencyConvert } from "../scripts/dataIO";
 import { calculateSubtotal } from "../scripts/calculateSubtotal";
 import Checkout from "../components/Cart/Checkout.astro";
 import { findColor, findStorage, getQuantity } from "../scripts/productProps";
+import Subtotal from "../components/Cart/Subtotal.astro";
 
 const cart = JSON.parse(Astro.cookies.get("cart").value || "[]") as ICartItem[];
 const currency = Astro.cookies.get("currency").value || "USD";
@@ -26,7 +27,7 @@ const total = calculateSubtotal(cart, products);
         <>
           <div class="header">
             <h1>Cart</h1>
-            <h2 id="subtotal">{currencyConvert(total, currency)}</h2>
+            <Subtotal total={total} />
             <Checkout />
           </div>
           <div id="cart">

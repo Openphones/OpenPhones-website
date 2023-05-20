@@ -1,8 +1,9 @@
 ---
 import { writeDescription } from "../../scripts/writeDescription";
-import { currencyConvert, IProduct } from "../../scripts/dataIO";
+import { IProduct } from "../../scripts/dataIO";
 import RemoveItem from "./RemoveItem.astro";
 import QuantitySelector from "./QuantitySelector.astro";
+import Price from "../Price.astro";
 
 interface Props {
   item: IProduct;
@@ -21,7 +22,6 @@ interface Props {
 }
 
 const { item, color, storage, quantity } = Astro.props;
-const currency = Astro.cookies.get("currency").value || "USD";
 ---
 
 <div id={`${item.id}-${storage.size}-${color.name}`} class="cart-item">
@@ -60,7 +60,7 @@ const currency = Astro.cookies.get("currency").value || "USD";
           )
         }
         ×
-        {currencyConvert(item.price, currency)}
+        <Price id={item.id} />
       </span>
     </div>
     <RemoveItem id={item.id} color={color.name} storage={storage.size} />

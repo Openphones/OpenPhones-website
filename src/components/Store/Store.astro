@@ -1,5 +1,5 @@
 ---
-import { currencyConvert, getProducts } from "../../scripts/dataIO";
+import { getProducts } from "../../scripts/dataIO";
 import StoreItem from "./StoreItem.astro";
 
 const currency = Astro.cookies.get("currency").value || "USD";
@@ -27,7 +27,7 @@ const products = await getProducts(Astro.url.hostname, currency);
                     longName={product.long_name}
                     shortName={product.short_name}
                     quality={product.quality}
-                    price={currencyConvert(product.price, currency)}
+                    price={product.price}
                     description={product.description}
                     id={product.id}
                   />
@@ -54,7 +54,7 @@ const products = await getProducts(Astro.url.hostname, currency);
                 longName={product.long_name}
                 shortName={product.short_name}
                 quality={product.quality}
-                price={currencyConvert(product.price, currency)}
+                price={product.price}
                 description={product.description}
                 id={product.id}
               />

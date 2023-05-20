@@ -1,0 +1,73 @@
+---
+interface Props {
+    id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<span class="item-price" data-id={id}></span>
+
+<style lang="scss">
+    span {
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    // Importing currencyConvert and getProducts functions from "../scripts/dataIO"
+    import { currencyConvert, getProducts } from "../scripts/dataIO";
+
+    // Getting reference to the currency select element
+    const currencySelect = document.getElementById(
+        "currency-select"
+    ) as HTMLSelectElement;
+
+    // Getting reference to price elements
+    const itemPrices = document.getElementsByClassName(
+        "item-price"
+    ) as HTMLCollectionOf<HTMLSpanElement>;
+
+    // Object to handle price and currency updates
+    const price = {
+        currency: null,
+        products: null,
+
+        // Method to update price element with converted currency
+        async update(el) {
+            const id = el.dataset.id;
+            const matchingProduct = this.products.find(
+                (product) => product.id === id
+            );
+            el.innerHTML = currencyConvert(
+                matchingProduct.price,
+                this.currency
+            );
+        },
+    };
+
+    // Set currency based on the value of the currency select element or from localStorage
+    price.currency = localStorage.getItem("currency") ?? currencySelect.value;
+
+    // Fetch products based on hostname and selected currency
+    price.products = await getProducts(location.hostname, price.currency);
+
+    // Update price elements with converted currency initially
+    for (const itemPrice of itemPrices) {
+        price.update(itemPrice);
+    }
+
+    // Event listener for currency select change
+    currencySelect.addEventListener("change", async () => {
+        // Update currency value
+        price.currency = currencySelect.value;
+
+        // Fetch products based on hostname and updated currency
+        price.products = await getProducts(location.hostname, price.currency);
+
+        // Update price elements with converted currency
+        for (const itemPrice of itemPrices) {
+            price.update(itemPrice);
+        }
+    });
+</script>

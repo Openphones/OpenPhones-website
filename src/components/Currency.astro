@@ -137,11 +137,9 @@ const currencies = [
   "ZAR",
   "ZMW",
 ];
-
-const currency = Astro.cookies.get("currency").value || "USD";
 ---
 
-<select id="currency" title="Currency selector">
+<select id="currency-select" title="Currency selector">
   {currencies.map((currency) => <option value={currency}>{currency}</option>)}
 </select>
 
@@ -159,18 +157,35 @@ const currency = Astro.cookies.get("currency").value || "USD";
   }
 </style>
 
-<script define:vars={{ currency }}>
-  const currencySelector = document.getElementById("currency");
-  currencySelector.value = currency;
-</script>
-
 <script>
-  const currencySelector = document.getElementById(
-    "currency"
+  // Getting reference to the currency select element
+  const currencySelect = document.getElementById(
+    "currency-select"
   ) as HTMLSelectElement;
 
-  currencySelector.addEventListener("change", () => {
-    document.cookie = `currency=${currencySelector.value}`;
-    location.reload();
-  });
+  // Object to handle currency selection and updates
+  const currency = {
+    currency: null,
+
+    // Method to initialize the currency selection
+    init(el) {
+      this.currency = localStorage.getItem("currency") ?? "USD";
+      localStorage.setItem("currency", this.currency);
+      el.value = this.currency;
+    },
+
+    // Method to update the currency value
+    update(el) {
+      this.currency = el.value;
+      localStorage.setItem("currency", this.currency);
+    },
+  };
+
+  // Initialize the currency selection
+  currency.init(currencySelect);
+
+  // Event listener for currency select change
+  currencySelect.addEventListener("change", () =>
+    currency.update(currencySelect)
+  );
 </script>
